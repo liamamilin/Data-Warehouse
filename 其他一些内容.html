@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 其他一些内容 | Data Warehouse</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 其他一些内容 | Data Warehouse" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 其他一些内容 | Data Warehouse" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="米霖" />
+
+
+<meta name="date" content="2023-01-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="数仓规范建设指南.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Warehouse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
+<li class="chapter" data-level="2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html"><i class="fa fa-check"></i><b>2</b> 数据仓库的基本概念</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓架构"><i class="fa fa-check"></i><b>2.1</b> 数仓架构</a></li>
+<li class="chapter" data-level="2.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库基本概念"><i class="fa fa-check"></i><b>2.2</b> 数据仓库基本概念</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#基本特征"><i class="fa fa-check"></i><b>2.2.1</b> <strong>基本特征</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#为什么要有数据仓库"><i class="fa fa-check"></i><b>2.3</b> 为什么要有数据仓库</a></li>
+<li class="chapter" data-level="2.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库与数据库的区别"><i class="fa fa-check"></i><b>2.4</b> 数据仓库与数据库的区别</a></li>
+<li class="chapter" data-level="2.5" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库分层架构"><i class="fa fa-check"></i><b>2.5</b> <strong>数据仓库分层架构</strong></a></li>
+<li class="chapter" data-level="2.6" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库架构"><i class="fa fa-check"></i><b>2.6</b> 数据仓库架构</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据集市架构"><i class="fa fa-check"></i><b>2.6.1</b> <strong>数据集市架构</strong></a></li>
+<li class="chapter" data-level="2.6.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#inmon企业工厂架构"><i class="fa fa-check"></i><b>2.6.2</b> <strong>Inmon企业工厂架构</strong></a></li>
+<li class="chapter" data-level="2.6.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#kimball数据仓库架构"><i class="fa fa-check"></i><b>2.6.3</b> <strong>Kimball数据仓库架构</strong></a></li>
+<li class="chapter" data-level="2.6.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#混合型数据仓库架构"><i class="fa fa-check"></i><b>2.6.4</b> <strong>混合型数据仓库架构</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库元数据的管理"><i class="fa fa-check"></i><b>2.7</b> <strong>数据仓库元数据的管理</strong></a></li>
+<li class="chapter" data-level="2.8" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓常见术语解析"><i class="fa fa-check"></i><b>2.8</b> <strong>数仓常见术语解析</strong></a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词解释"><i class="fa fa-check"></i><b>2.8.1</b> <strong>数仓名词解释</strong></a></li>
+<li class="chapter" data-level="2.8.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词之间关系"><i class="fa fa-check"></i><b>2.8.2</b> <strong>数仓名词之间关系</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html"><i class="fa fa-check"></i><b>3</b> <strong>离线数仓建设核心</strong></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓分层"><i class="fa fa-check"></i><b>3.1</b> <strong>数仓分层</strong></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据源层odsoperational-data-store"><i class="fa fa-check"></i><b>3.1.1</b> <strong>数据源层：ODS（Operational Data Store）</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据仓库层dwdata-warehouse"><i class="fa fa-check"></i><b>3.1.2</b> <strong>数据仓库层：DW（Data Warehouse）</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据应用层appapplication"><i class="fa fa-check"></i><b>3.1.3</b> <strong>数据应用层：APP（Application）</strong></a></li>
+<li class="chapter" data-level="3.1.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维表层dimdimension"><i class="fa fa-check"></i><b>3.1.4</b> <strong>维表层：DIM（Dimension）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓建模方法"><i class="fa fa-check"></i><b>3.2</b> <strong>数仓建模方法</strong></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#范式建模法third-normal-form3nf"><i class="fa fa-check"></i><b>3.2.1</b> <strong>范式建模法（Third Normal Form，3NF）</strong></a></li>
+<li class="chapter" data-level="3.2.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模法dimensional-modeling"><i class="fa fa-check"></i><b>3.2.2</b> <strong>维度建模法（Dimensional Modeling）</strong></a></li>
+<li class="chapter" data-level="3.2.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#实体建模法entity-modeling"><i class="fa fa-check"></i><b>3.2.3</b> <strong>实体建模法（Entity Modeling）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模详解"><i class="fa fa-check"></i><b>3.3</b> <strong>维度建模详解</strong></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模中表的类型"><i class="fa fa-check"></i><b>3.3.1</b> <strong>维度建模中表的类型</strong></a></li>
+<li class="chapter" data-level="3.3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#事实表"><i class="fa fa-check"></i><b>3.3.2</b> <strong>事实表</strong></a></li>
+<li class="chapter" data-level="3.3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度表"><i class="fa fa-check"></i><b>3.3.3</b> 维度表</a></li>
+<li class="chapter" data-level="3.3.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模三种模式"><i class="fa fa-check"></i><b>3.3.4</b> 维度建模三种模式</a></li>
+<li class="chapter" data-level="3.3.5" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模过程"><i class="fa fa-check"></i><b>3.3.5</b> 维度建模过程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="离线数仓建设.html"><a href="离线数仓建设.html"><i class="fa fa-check"></i><b>4</b> 离线数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#业务理解"><i class="fa fa-check"></i><b>4.1</b> 业务理解</a></li>
+<li class="chapter" data-level="4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#早期规划"><i class="fa fa-check"></i><b>4.2</b> 早期规划</a></li>
+<li class="chapter" data-level="4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据中台"><i class="fa fa-check"></i><b>4.3</b> 数据中台</a></li>
+<li class="chapter" data-level="4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数仓建设"><i class="fa fa-check"></i><b>4.4</b> 数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型"><i class="fa fa-check"></i><b>4.4.1</b> 模型</a></li>
+<li class="chapter" data-level="4.4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型分层"><i class="fa fa-check"></i><b>4.4.2</b> 模型分层</a></li>
+<li class="chapter" data-level="4.4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据流向"><i class="fa fa-check"></i><b>4.4.3</b> 数据流向</a></li>
+<li class="chapter" data-level="4.4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#规范"><i class="fa fa-check"></i><b>4.4.4</b> 规范</a></li>
+<li class="chapter" data-level="4.4.5" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据层具体实现"><i class="fa fa-check"></i><b>4.4.5</b> 数据层具体实现</a></li>
+<li class="chapter" data-level="4.4.6" data-path="离线数仓建设.html"><a href="离线数仓建设.html#总结"><i class="fa fa-check"></i><b>4.4.6</b> 总结</a></li>
+<li class="chapter" data-level="4.4.7" data-path="离线数仓建设.html"><a href="离线数仓建设.html#实际生产中注意事项"><i class="fa fa-check"></i><b>4.4.7</b> 实际生产中注意事项</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="实时计算.html"><a href="实时计算.html"><i class="fa fa-check"></i><b>5</b> 实时计算</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="实时计算.html"><a href="实时计算.html#实时计算应用场景"><i class="fa fa-check"></i><b>5.1</b> 实时计算应用场景</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="实时计算.html"><a href="实时计算.html#实时智能推荐"><i class="fa fa-check"></i><b>5.1.1</b> 实时智能推荐</a></li>
+<li class="chapter" data-level="5.1.2" data-path="实时计算.html"><a href="实时计算.html#实时欺诈检测"><i class="fa fa-check"></i><b>5.1.2</b> 实时欺诈检测</a></li>
+<li class="chapter" data-level="5.1.3" data-path="实时计算.html"><a href="实时计算.html#舆情分析"><i class="fa fa-check"></i><b>5.1.3</b> 舆情分析</a></li>
+<li class="chapter" data-level="5.1.4" data-path="实时计算.html"><a href="实时计算.html#复杂事件处理"><i class="fa fa-check"></i><b>5.1.4</b> 复杂事件处理</a></li>
+<li class="chapter" data-level="5.1.5" data-path="实时计算.html"><a href="实时计算.html#实时机器学习"><i class="fa fa-check"></i><b>5.1.5</b> 实时机器学习</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="实时计算.html"><a href="实时计算.html#实时计算总览"><i class="fa fa-check"></i><b>5.2</b> 实时计算总览</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="实时计算.html"><a href="实时计算.html#数据同步"><i class="fa fa-check"></i><b>5.2.1</b> 数据同步：</a></li>
+<li class="chapter" data-level="5.2.2" data-path="实时计算.html"><a href="实时计算.html#数据存储"><i class="fa fa-check"></i><b>5.2.2</b> 数据存储：</a></li>
+<li class="chapter" data-level="5.2.3" data-path="实时计算.html"><a href="实时计算.html#数据计算"><i class="fa fa-check"></i><b>5.2.3</b> 数据计算：</a></li>
+<li class="chapter" data-level="5.2.4" data-path="实时计算.html"><a href="实时计算.html#实时应用"><i class="fa fa-check"></i><b>5.2.4</b> 实时应用：</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="实时计算.html"><a href="实时计算.html#实时架构"><i class="fa fa-check"></i><b>5.3</b> 实时架构</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="实时计算.html"><a href="实时计算.html#lambda架构"><i class="fa fa-check"></i><b>5.3.1</b> Lambda架构</a></li>
+<li class="chapter" data-level="5.3.2" data-path="实时计算.html"><a href="实时计算.html#为什么lambda架构要分成两条线计算"><i class="fa fa-check"></i><b>5.3.2</b> 为什么Lambda架构要分成两条线计算？</a></li>
+<li class="chapter" data-level="5.3.3" data-path="实时计算.html"><a href="实时计算.html#lambda架构有没有缺点"><i class="fa fa-check"></i><b>5.3.3</b> Lambda架构有没有缺点</a></li>
+<li class="chapter" data-level="5.3.4" data-path="实时计算.html"><a href="实时计算.html#kappa架构"><i class="fa fa-check"></i><b>5.3.4</b> Kappa架构</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="实时数仓建设.html"><a href="实时数仓建设.html"><i class="fa fa-check"></i><b>6</b> 实时数仓建设</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时计算初期"><i class="fa fa-check"></i><b>6.1</b> 实时计算初期</a></li>
+<li class="chapter" data-level="6.2" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时数仓建设-1"><i class="fa fa-check"></i><b>6.2</b> 实时数仓建设</a></li>
+<li class="chapter" data-level="6.3" data-path="实时数仓建设.html"><a href="实时数仓建设.html#lambda架构的实时数仓"><i class="fa fa-check"></i><b>6.3</b> Lambda架构的实时数仓</a></li>
+<li class="chapter" data-level="6.4" data-path="实时数仓建设.html"><a href="实时数仓建设.html#kappa架构的实时数仓"><i class="fa fa-check"></i><b>6.4</b> Kappa架构的实时数仓</a></li>
+<li class="chapter" data-level="6.5" data-path="实时数仓建设.html"><a href="实时数仓建设.html#流批结合的实时数仓"><i class="fa fa-check"></i><b>6.5</b> 流批结合的实时数仓</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html"><i class="fa fa-check"></i><b>7</b> 搭建数据仓库</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#基于flink-sql从0到1构建一个实时数仓"><i class="fa fa-check"></i><b>7.1</b> 基于Flink SQL从0到1构建一个实时数仓</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#架构设计"><i class="fa fa-check"></i><b>7.1.1</b> 架构设计</a></li>
+<li class="chapter" data-level="7.1.2" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#业务数据准备"><i class="fa fa-check"></i><b>7.1.2</b> 业务数据准备</a></li>
+<li class="chapter" data-level="7.1.3" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#数据处理流程"><i class="fa fa-check"></i><b>7.1.3</b> 数据处理流程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html"><i class="fa fa-check"></i><b>8</b> 数仓规范建设指南</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓公共开发规范"><i class="fa fa-check"></i><b>8.1</b> 数仓公共开发规范</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#层次调用规范"><i class="fa fa-check"></i><b>8.1.1</b> 层次调用规范</a></li>
+<li class="chapter" data-level="8.1.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据类型规范"><i class="fa fa-check"></i><b>8.1.2</b> 数据类型规范</a></li>
+<li class="chapter" data-level="8.1.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据冗余规范"><i class="fa fa-check"></i><b>8.1.3</b> 数据冗余规范</a></li>
+<li class="chapter" data-level="8.1.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#null字段处理规范"><i class="fa fa-check"></i><b>8.1.4</b> NULL字段处理规范</a></li>
+<li class="chapter" data-level="8.1.5" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标口径规范"><i class="fa fa-check"></i><b>8.1.5</b> 指标口径规范</a></li>
+<li class="chapter" data-level="8.1.6" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据表处理规范"><i class="fa fa-check"></i><b>8.1.6</b> 数据表处理规范</a></li>
+<li class="chapter" data-level="8.1.7" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表的生命周期管理"><i class="fa fa-check"></i><b>8.1.7</b> 表的生命周期管理</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓各层开发规范"><i class="fa fa-check"></i><b>8.2</b> 数仓各层开发规范</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#ods层设计规范"><i class="fa fa-check"></i><b>8.2.1</b> ODS层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#公共维度层设计规范"><i class="fa fa-check"></i><b>8.3</b> 公共维度层设计规范</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#设计准则"><i class="fa fa-check"></i><b>8.3.1</b> 设计准则</a></li>
+<li class="chapter" data-level="8.3.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dwd明细层设计规范"><i class="fa fa-check"></i><b>8.3.2</b> DWD明细层设计规范</a></li>
+<li class="chapter" data-level="8.3.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dws公共汇总层设计规范"><i class="fa fa-check"></i><b>8.3.3</b> DWS公共汇总层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓命名规范"><i class="fa fa-check"></i><b>8.4</b> 数仓命名规范</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#词根设计规范"><i class="fa fa-check"></i><b>8.4.1</b> 词根设计规范</a></li>
+<li class="chapter" data-level="8.4.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓表的命名规范如下"><i class="fa fa-check"></i><b>8.4.2</b> 数仓表的命名规范如下：</a></li>
+<li class="chapter" data-level="8.4.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表命名规范"><i class="fa fa-check"></i><b>8.4.3</b> 表命名规范</a></li>
+<li class="chapter" data-level="8.4.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标命名规范"><i class="fa fa-check"></i><b>8.4.4</b> 指标命名规范</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="其他一些内容.html"><a href="其他一些内容.html"><i class="fa fa-check"></i><b>9</b> 其他一些内容</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发挂件角色"><i class="fa fa-check"></i><b>9.1</b> 数据仓库开发挂件角色</a></li>
+<li class="chapter" data-level="9.2" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发需要掌握的技能"><i class="fa fa-check"></i><b>9.2</b> 数据仓库开发需要掌握的技能</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="其他一些内容.html"><a href="其他一些内容.html#如何额进行elt"><i class="fa fa-check"></i><b>9.2.1</b> 如何额进行ELT</a></li>
+<li class="chapter" data-level="9.2.2" data-path="其他一些内容.html"><a href="其他一些内容.html#一个简单的etl例子"><i class="fa fa-check"></i><b>9.2.2</b> 一个简单的ETL例子</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Warehouse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="其他一些内容" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> 其他一些内容<a href="其他一些内容.html#其他一些内容" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="数据仓库开发挂件角色" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> 数据仓库开发挂件角色<a href="其他一些内容.html#数据仓库开发挂件角色" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>专案经理</li>
+</ol>
+<ul>
+<li>定义数据仓库项目及其可交付成果的范围。</li>
+<li>概述项目计划，包括预算估算、项目资源和时间表。</li>
+<li>管理日常数据仓库项目任务和活动（资源协调、项目状态跟踪、项目进度和沟通瓶颈等）</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>业务分析师</li>
+</ol>
+<ul>
+<li>确定业务用户的需求并确保将其清楚地传达给技术团队。</li>
+<li>进行采访并记录下来。</li>
+<li>协助数据建模师和DBA进行数据建模、数据映射活动等。</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>数据建模师</li>
+</ol>
+<ul>
+<li>执行详细的数据分析。</li>
+<li>设计数据仓库的整体技术架构以及具体的每个组件（数据暂存、数据存储、数据模型等）。</li>
+<li>监督架构开发和实施。</li>
+<li>就技术堆栈提供建议。</li>
+<li>记录整个解决方案及其组成部分的范围。</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>数据仓库数据库管理员（DBA）</li>
+</ol>
+<ul>
+<li>将逻辑模型转换为物理表结构。</li>
+<li>确保数据库的操作支持，调整数据库性能以确保数据的可用性和完整性。</li>
+<li>规划数据备份/恢复计划等。</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>ETL开发人员</li>
+</ol>
+<ul>
+<li>规划、开发和设置提取、转化和装载管道。</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>质量保证工程师</li>
+</ol>
+<ul>
+<li>制定测试策略以确保数据仓库的正常运行和数据准确性。</li>
+<li>识别潜在错误并确保其解决。</li>
+<li>对开发的DW解决方案进行测试。</li>
+</ul>
+</div>
+<div id="数据仓库开发需要掌握的技能" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> 数据仓库开发需要掌握的技能<a href="其他一些内容.html#数据仓库开发需要掌握的技能" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>数据仓库开发是一个涵盖广泛的领域，需要掌握多项技能和工具。以下是数据仓库开发人员需要掌握的一些关键技能：</p>
+<ol style="list-style-type: decimal">
+<li><p>数据建模：了解数据仓库建模技巧，包括维度建模（星型模式、雪花模式）和规范化建模。熟悉事实表和维度表的设计原则。</p></li>
+<li><p>SQL 编程：精通 SQL，包括数据提取、数据变换、数据加载（ETL）等方面的 SQL 编程。</p></li>
+<li><p>ETL 工具：掌握一些 ETL 工具，如Apache NiFi、Apache Spark、Talend、Informatica等，用于数据抽取、数据转换和数据加载。</p></li>
+<li><p>数据仓库工具：了解数据仓库平台和工具，如Amazon Redshift、Snowflake、Teradata等，以及开源工具如Apache Hive、Apache Hadoop等。</p></li>
+<li><p>数据质量管理：能够识别和解决数据质量问题，进行数据清洗和数据验证，确保数据仓库的数据准确性。</p></li>
+<li><p>数据安全：熟悉数据安全和访问控制的最佳实践，确保数据仓库中的数据不受未经授权的访问。</p></li>
+<li><p>数据仓库架构：了解数据仓库架构和模式，包括中心化、分布式、数据湖等不同架构。</p></li>
+<li><p>数据集成：熟悉不同数据源的集成技术，包括数据抽取、数据变换、数据加载（ETL）和数据同步。</p></li>
+<li><p>数据挖掘和分析：具备一定的数据挖掘和数据分析技能，以便更好地理解和解释数据。</p></li>
+<li><p>数据仓库自动化：了解自动化工具和脚本编写，以简化数据仓库开发和维护。</p></li>
+<li><p>数据仓库性能调优：能够优化数据仓库查询性能，包括索引设计、分区策略、数据压缩等。</p></li>
+<li><p>数据仓库监控和维护：监控数据仓库运行状况，进行维护和故障排除。</p></li>
+<li><p>数据仓库文档：编写和维护数据仓库文档，包括数据字典、数据流程图和元数据。</p></li>
+<li><p>数据仓库最佳实践：了解数据仓库最佳实践和标准，以确保项目的成功和可维护性。</p></li>
+<li><p>数据仓库项目管理：具备项目管理技能，能够规划、执行和交付数据仓库项目。</p></li>
+</ol>
+<div id="如何额进行elt" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> 如何额进行ELT<a href="其他一些内容.html#如何额进行elt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>ETL（抽取、转换、加载）是数据仓库开发中的关键环节，需要掌握多项技能和工具。以下是进行ETL过程需要的技能：</p>
+<ol style="list-style-type: decimal">
+<li><p>数据建模：了解数据仓库建模技巧，包括维度建模和规范化建模，以便正确抽取和转换数据。</p></li>
+<li><p>SQL 编程：精通SQL，包括SELECT、JOIN、GROUP BY等操作，以从源数据抽取和筛选数据。</p></li>
+<li><p>ETL工具：熟悉ETL工具，如Talend、Informatica、Apache NiFi、Apache Spark等，用于自动化数据抽取、数据转换和数据加载。</p></li>
+<li><p>数据提取：了解如何从各种数据源（数据库、文件、API等）抽取数据，包括编写SQL查询、设置连接、数据抽取频率等。</p></li>
+<li><p>数据转换：能够进行数据清洗、格式化、聚合和转换，确保数据符合数据仓库的需求。</p></li>
+<li><p>数据加载：熟悉不同加载策略，如全量加载、增量加载、事实表加载、维度表加载等。</p></li>
+<li><p>数据质量管理：能够检测和纠正数据质量问题，如重复数据、缺失数据和不一致数据。</p></li>
+<li><p>数据集成：了解数据集成技术，包括数据同步、数据合并和数据合规性。</p></li>
+<li><p>脚本编写：能够编写脚本或程序来自动化ETL过程，特别是在没有专用ETL工具的情况下。</p></li>
+<li><p>数据标准化：确保数据遵循统一的标准和命名规范，以便更好地与其他数据集成。</p></li>
+<li><p>数据变换：进行数据计算、聚合和转换，以满足业务需求。</p></li>
+<li><p>数据流程管理：创建和维护ETL流程，包括工作流调度、错误处理和日志记录。</p></li>
+<li><p>数据仓库架构：了解数据仓库架构和模式，以确保ETL流程与整体架构一致。</p></li>
+<li><p>安全性和合规性：确保在ETL过程中处理敏感数据时采取适当的安全措施和合规性措施。</p></li>
+<li><p>监控和性能优化：监控ETL过程运行状况，进行性能调优以减少处理时间。</p></li>
+</ol>
+<p>ETL是数据仓库开发中的关键步骤，技能的掌握对于确保数据仓库中的数据准确性和一致性至关重要。不同项目和组织可能使用不同的工具和技术，因此需要不断学习和适应新的发展。</p>
+</div>
+<div id="一个简单的etl例子" class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> 一个简单的ETL例子<a href="其他一些内容.html#一个简单的etl例子" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>编写ETL（抽取、转换、加载）自动化脚本通常涉及使用编程语言或ETL工具，以下是一个Python脚本示例，用于从一个CSV文件抽取数据、转换数据，然后加载到数据库中。</p>
+<pre><code>import pandas as pd
+import sqlalchemy
+
+# 配置数据库连接
+database_url = &quot;postgresql://username:password@localhost:5432/yourdatabase&quot;
+engine = sqlalchemy.create_engine(database_url)
+
+# 从CSV文件抽取数据
+source_file = &quot;source_data.csv&quot;
+data = pd.read_csv(source_file)
+
+# 数据转换
+# 假设我们对&quot;amount&quot;列进行了数据加工，将其乘以2
+data[&#39;amount&#39;] = data[&#39;amount&#39;] * 2
+
+# 数据加载到数据库中
+# 假设我们将数据加载到名为&quot;target_table&quot;的数据库表中
+data.to_sql(&#39;target_table&#39;, engine, if_exists=&#39;replace&#39;, index=False)
+
+print(&quot;ETL完成&quot;)
+</code></pre>
+<p>这只是一个非常基本的示例。在实际情况中，ETL脚本可能需要更多的数据转换、数据清洗、错误处理、日志记录和性能优化等功能。另外，也可以使用专门的ETL工具，如Apache NiFi、Talend、Informatica等，来更轻松地创建ETL流程。</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="数仓规范建设指南.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/Other.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 数据仓库的基本概念 | Data Warehouse</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 数据仓库的基本概念 | Data Warehouse" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 数据仓库的基本概念 | Data Warehouse" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="米霖" />
+
+
+<meta name="date" content="2023-01-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="离线数仓建设核心.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Warehouse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
+<li class="chapter" data-level="2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html"><i class="fa fa-check"></i><b>2</b> 数据仓库的基本概念</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓架构"><i class="fa fa-check"></i><b>2.1</b> 数仓架构</a></li>
+<li class="chapter" data-level="2.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库基本概念"><i class="fa fa-check"></i><b>2.2</b> 数据仓库基本概念</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#基本特征"><i class="fa fa-check"></i><b>2.2.1</b> <strong>基本特征</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#为什么要有数据仓库"><i class="fa fa-check"></i><b>2.3</b> 为什么要有数据仓库</a></li>
+<li class="chapter" data-level="2.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库与数据库的区别"><i class="fa fa-check"></i><b>2.4</b> 数据仓库与数据库的区别</a></li>
+<li class="chapter" data-level="2.5" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库分层架构"><i class="fa fa-check"></i><b>2.5</b> <strong>数据仓库分层架构</strong></a></li>
+<li class="chapter" data-level="2.6" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库架构"><i class="fa fa-check"></i><b>2.6</b> 数据仓库架构</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据集市架构"><i class="fa fa-check"></i><b>2.6.1</b> <strong>数据集市架构</strong></a></li>
+<li class="chapter" data-level="2.6.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#inmon企业工厂架构"><i class="fa fa-check"></i><b>2.6.2</b> <strong>Inmon企业工厂架构</strong></a></li>
+<li class="chapter" data-level="2.6.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#kimball数据仓库架构"><i class="fa fa-check"></i><b>2.6.3</b> <strong>Kimball数据仓库架构</strong></a></li>
+<li class="chapter" data-level="2.6.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#混合型数据仓库架构"><i class="fa fa-check"></i><b>2.6.4</b> <strong>混合型数据仓库架构</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库元数据的管理"><i class="fa fa-check"></i><b>2.7</b> <strong>数据仓库元数据的管理</strong></a></li>
+<li class="chapter" data-level="2.8" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓常见术语解析"><i class="fa fa-check"></i><b>2.8</b> <strong>数仓常见术语解析</strong></a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词解释"><i class="fa fa-check"></i><b>2.8.1</b> <strong>数仓名词解释</strong></a></li>
+<li class="chapter" data-level="2.8.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词之间关系"><i class="fa fa-check"></i><b>2.8.2</b> <strong>数仓名词之间关系</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html"><i class="fa fa-check"></i><b>3</b> <strong>离线数仓建设核心</strong></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓分层"><i class="fa fa-check"></i><b>3.1</b> <strong>数仓分层</strong></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据源层odsoperational-data-store"><i class="fa fa-check"></i><b>3.1.1</b> <strong>数据源层：ODS（Operational Data Store）</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据仓库层dwdata-warehouse"><i class="fa fa-check"></i><b>3.1.2</b> <strong>数据仓库层：DW（Data Warehouse）</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据应用层appapplication"><i class="fa fa-check"></i><b>3.1.3</b> <strong>数据应用层：APP（Application）</strong></a></li>
+<li class="chapter" data-level="3.1.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维表层dimdimension"><i class="fa fa-check"></i><b>3.1.4</b> <strong>维表层：DIM（Dimension）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓建模方法"><i class="fa fa-check"></i><b>3.2</b> <strong>数仓建模方法</strong></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#范式建模法third-normal-form3nf"><i class="fa fa-check"></i><b>3.2.1</b> <strong>范式建模法（Third Normal Form，3NF）</strong></a></li>
+<li class="chapter" data-level="3.2.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模法dimensional-modeling"><i class="fa fa-check"></i><b>3.2.2</b> <strong>维度建模法（Dimensional Modeling）</strong></a></li>
+<li class="chapter" data-level="3.2.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#实体建模法entity-modeling"><i class="fa fa-check"></i><b>3.2.3</b> <strong>实体建模法（Entity Modeling）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模详解"><i class="fa fa-check"></i><b>3.3</b> <strong>维度建模详解</strong></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模中表的类型"><i class="fa fa-check"></i><b>3.3.1</b> <strong>维度建模中表的类型</strong></a></li>
+<li class="chapter" data-level="3.3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#事实表"><i class="fa fa-check"></i><b>3.3.2</b> <strong>事实表</strong></a></li>
+<li class="chapter" data-level="3.3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度表"><i class="fa fa-check"></i><b>3.3.3</b> 维度表</a></li>
+<li class="chapter" data-level="3.3.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模三种模式"><i class="fa fa-check"></i><b>3.3.4</b> 维度建模三种模式</a></li>
+<li class="chapter" data-level="3.3.5" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模过程"><i class="fa fa-check"></i><b>3.3.5</b> 维度建模过程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="离线数仓建设.html"><a href="离线数仓建设.html"><i class="fa fa-check"></i><b>4</b> 离线数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#业务理解"><i class="fa fa-check"></i><b>4.1</b> 业务理解</a></li>
+<li class="chapter" data-level="4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#早期规划"><i class="fa fa-check"></i><b>4.2</b> 早期规划</a></li>
+<li class="chapter" data-level="4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据中台"><i class="fa fa-check"></i><b>4.3</b> 数据中台</a></li>
+<li class="chapter" data-level="4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数仓建设"><i class="fa fa-check"></i><b>4.4</b> 数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型"><i class="fa fa-check"></i><b>4.4.1</b> 模型</a></li>
+<li class="chapter" data-level="4.4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型分层"><i class="fa fa-check"></i><b>4.4.2</b> 模型分层</a></li>
+<li class="chapter" data-level="4.4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据流向"><i class="fa fa-check"></i><b>4.4.3</b> 数据流向</a></li>
+<li class="chapter" data-level="4.4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#规范"><i class="fa fa-check"></i><b>4.4.4</b> 规范</a></li>
+<li class="chapter" data-level="4.4.5" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据层具体实现"><i class="fa fa-check"></i><b>4.4.5</b> 数据层具体实现</a></li>
+<li class="chapter" data-level="4.4.6" data-path="离线数仓建设.html"><a href="离线数仓建设.html#总结"><i class="fa fa-check"></i><b>4.4.6</b> 总结</a></li>
+<li class="chapter" data-level="4.4.7" data-path="离线数仓建设.html"><a href="离线数仓建设.html#实际生产中注意事项"><i class="fa fa-check"></i><b>4.4.7</b> 实际生产中注意事项</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="实时计算.html"><a href="实时计算.html"><i class="fa fa-check"></i><b>5</b> 实时计算</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="实时计算.html"><a href="实时计算.html#实时计算应用场景"><i class="fa fa-check"></i><b>5.1</b> 实时计算应用场景</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="实时计算.html"><a href="实时计算.html#实时智能推荐"><i class="fa fa-check"></i><b>5.1.1</b> 实时智能推荐</a></li>
+<li class="chapter" data-level="5.1.2" data-path="实时计算.html"><a href="实时计算.html#实时欺诈检测"><i class="fa fa-check"></i><b>5.1.2</b> 实时欺诈检测</a></li>
+<li class="chapter" data-level="5.1.3" data-path="实时计算.html"><a href="实时计算.html#舆情分析"><i class="fa fa-check"></i><b>5.1.3</b> 舆情分析</a></li>
+<li class="chapter" data-level="5.1.4" data-path="实时计算.html"><a href="实时计算.html#复杂事件处理"><i class="fa fa-check"></i><b>5.1.4</b> 复杂事件处理</a></li>
+<li class="chapter" data-level="5.1.5" data-path="实时计算.html"><a href="实时计算.html#实时机器学习"><i class="fa fa-check"></i><b>5.1.5</b> 实时机器学习</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="实时计算.html"><a href="实时计算.html#实时计算总览"><i class="fa fa-check"></i><b>5.2</b> 实时计算总览</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="实时计算.html"><a href="实时计算.html#数据同步"><i class="fa fa-check"></i><b>5.2.1</b> 数据同步：</a></li>
+<li class="chapter" data-level="5.2.2" data-path="实时计算.html"><a href="实时计算.html#数据存储"><i class="fa fa-check"></i><b>5.2.2</b> 数据存储：</a></li>
+<li class="chapter" data-level="5.2.3" data-path="实时计算.html"><a href="实时计算.html#数据计算"><i class="fa fa-check"></i><b>5.2.3</b> 数据计算：</a></li>
+<li class="chapter" data-level="5.2.4" data-path="实时计算.html"><a href="实时计算.html#实时应用"><i class="fa fa-check"></i><b>5.2.4</b> 实时应用：</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="实时计算.html"><a href="实时计算.html#实时架构"><i class="fa fa-check"></i><b>5.3</b> 实时架构</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="实时计算.html"><a href="实时计算.html#lambda架构"><i class="fa fa-check"></i><b>5.3.1</b> Lambda架构</a></li>
+<li class="chapter" data-level="5.3.2" data-path="实时计算.html"><a href="实时计算.html#为什么lambda架构要分成两条线计算"><i class="fa fa-check"></i><b>5.3.2</b> 为什么Lambda架构要分成两条线计算？</a></li>
+<li class="chapter" data-level="5.3.3" data-path="实时计算.html"><a href="实时计算.html#lambda架构有没有缺点"><i class="fa fa-check"></i><b>5.3.3</b> Lambda架构有没有缺点</a></li>
+<li class="chapter" data-level="5.3.4" data-path="实时计算.html"><a href="实时计算.html#kappa架构"><i class="fa fa-check"></i><b>5.3.4</b> Kappa架构</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="实时数仓建设.html"><a href="实时数仓建设.html"><i class="fa fa-check"></i><b>6</b> 实时数仓建设</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时计算初期"><i class="fa fa-check"></i><b>6.1</b> 实时计算初期</a></li>
+<li class="chapter" data-level="6.2" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时数仓建设-1"><i class="fa fa-check"></i><b>6.2</b> 实时数仓建设</a></li>
+<li class="chapter" data-level="6.3" data-path="实时数仓建设.html"><a href="实时数仓建设.html#lambda架构的实时数仓"><i class="fa fa-check"></i><b>6.3</b> Lambda架构的实时数仓</a></li>
+<li class="chapter" data-level="6.4" data-path="实时数仓建设.html"><a href="实时数仓建设.html#kappa架构的实时数仓"><i class="fa fa-check"></i><b>6.4</b> Kappa架构的实时数仓</a></li>
+<li class="chapter" data-level="6.5" data-path="实时数仓建设.html"><a href="实时数仓建设.html#流批结合的实时数仓"><i class="fa fa-check"></i><b>6.5</b> 流批结合的实时数仓</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html"><i class="fa fa-check"></i><b>7</b> 搭建数据仓库</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#基于flink-sql从0到1构建一个实时数仓"><i class="fa fa-check"></i><b>7.1</b> 基于Flink SQL从0到1构建一个实时数仓</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#架构设计"><i class="fa fa-check"></i><b>7.1.1</b> 架构设计</a></li>
+<li class="chapter" data-level="7.1.2" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#业务数据准备"><i class="fa fa-check"></i><b>7.1.2</b> 业务数据准备</a></li>
+<li class="chapter" data-level="7.1.3" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#数据处理流程"><i class="fa fa-check"></i><b>7.1.3</b> 数据处理流程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html"><i class="fa fa-check"></i><b>8</b> 数仓规范建设指南</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓公共开发规范"><i class="fa fa-check"></i><b>8.1</b> 数仓公共开发规范</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#层次调用规范"><i class="fa fa-check"></i><b>8.1.1</b> 层次调用规范</a></li>
+<li class="chapter" data-level="8.1.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据类型规范"><i class="fa fa-check"></i><b>8.1.2</b> 数据类型规范</a></li>
+<li class="chapter" data-level="8.1.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据冗余规范"><i class="fa fa-check"></i><b>8.1.3</b> 数据冗余规范</a></li>
+<li class="chapter" data-level="8.1.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#null字段处理规范"><i class="fa fa-check"></i><b>8.1.4</b> NULL字段处理规范</a></li>
+<li class="chapter" data-level="8.1.5" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标口径规范"><i class="fa fa-check"></i><b>8.1.5</b> 指标口径规范</a></li>
+<li class="chapter" data-level="8.1.6" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据表处理规范"><i class="fa fa-check"></i><b>8.1.6</b> 数据表处理规范</a></li>
+<li class="chapter" data-level="8.1.7" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表的生命周期管理"><i class="fa fa-check"></i><b>8.1.7</b> 表的生命周期管理</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓各层开发规范"><i class="fa fa-check"></i><b>8.2</b> 数仓各层开发规范</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#ods层设计规范"><i class="fa fa-check"></i><b>8.2.1</b> ODS层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#公共维度层设计规范"><i class="fa fa-check"></i><b>8.3</b> 公共维度层设计规范</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#设计准则"><i class="fa fa-check"></i><b>8.3.1</b> 设计准则</a></li>
+<li class="chapter" data-level="8.3.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dwd明细层设计规范"><i class="fa fa-check"></i><b>8.3.2</b> DWD明细层设计规范</a></li>
+<li class="chapter" data-level="8.3.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dws公共汇总层设计规范"><i class="fa fa-check"></i><b>8.3.3</b> DWS公共汇总层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓命名规范"><i class="fa fa-check"></i><b>8.4</b> 数仓命名规范</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#词根设计规范"><i class="fa fa-check"></i><b>8.4.1</b> 词根设计规范</a></li>
+<li class="chapter" data-level="8.4.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓表的命名规范如下"><i class="fa fa-check"></i><b>8.4.2</b> 数仓表的命名规范如下：</a></li>
+<li class="chapter" data-level="8.4.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表命名规范"><i class="fa fa-check"></i><b>8.4.3</b> 表命名规范</a></li>
+<li class="chapter" data-level="8.4.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标命名规范"><i class="fa fa-check"></i><b>8.4.4</b> 指标命名规范</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="其他一些内容.html"><a href="其他一些内容.html"><i class="fa fa-check"></i><b>9</b> 其他一些内容</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发挂件角色"><i class="fa fa-check"></i><b>9.1</b> 数据仓库开发挂件角色</a></li>
+<li class="chapter" data-level="9.2" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发需要掌握的技能"><i class="fa fa-check"></i><b>9.2</b> 数据仓库开发需要掌握的技能</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="其他一些内容.html"><a href="其他一些内容.html#如何额进行elt"><i class="fa fa-check"></i><b>9.2.1</b> 如何额进行ELT</a></li>
+<li class="chapter" data-level="9.2.2" data-path="其他一些内容.html"><a href="其他一些内容.html#一个简单的etl例子"><i class="fa fa-check"></i><b>9.2.2</b> 一个简单的ETL例子</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Warehouse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="数据仓库的基本概念" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> 数据仓库的基本概念<a href="数据仓库的基本概念.html#数据仓库的基本概念" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="数仓架构" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> 数仓架构<a href="数据仓库的基本概念.html#数仓架构" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>数据仓库架构理解成构成数据仓库的组件及其之间的关系</strong>，画出下面的数仓架构图：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-720329eacc957c76281d5d9e666671c3_1440w.png" /></p>
+<p>上图中显示的整个数据仓库环境包括操作型系统和数据仓库系统两大部分。操作型系统的数据由各种形式的业务数据组成，这些数据经过抽取、转换和装载（ETL）过程进入数据仓库系统。</p>
+<p>在数据仓库技术演化过程中，产生了几种主要的架构方法，包括<strong>数据集市架构</strong>、<strong>Inmon企业信息工厂架构</strong>、<strong>Kimball数据仓库架构</strong>、<strong>混合型数据仓库架构</strong>。</p>
+</div>
+<div id="数据仓库基本概念" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 数据仓库基本概念<a href="数据仓库的基本概念.html#数据仓库基本概念" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>英文名称为Data Warehouse，可简写为DW或DWH。数据仓库的目的是构建面向分析的集成化数据环境，为企业提供决策支持（Decision Support）。它出于分析性报告和决策支持目的而创建。</p>
+<p>数据仓库本身并不“生产”任何数据，同时自身也不需要“消费”任何的数据，数据来源于外部，并且开放给外部应用，这也是为什么叫“仓库”，而不叫“工厂”的原因。</p>
+<div id="基本特征" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> <strong>基本特征</strong><a href="数据仓库的基本概念.html#基本特征" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>数据仓库是面向主题的、集成的、非易失的和时变的数据集合，用以支持管理决策。</p>
+<ol style="list-style-type: decimal">
+<li>面向主题</li>
+</ol>
+<p>传统数据库中，最大的特点是面向应用进行数据的组织，各个业务系统可能是相互分离的。而数据仓库则是面向主题的。主题是一个抽象的概念，是较高层次上企业信息系统中的数据综合、归类并进行分析利用的抽象。在逻辑意义上，它是对应企业中某一宏观分析领域所涉及的分析对象。</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>集成的</strong> - 这一步最关键, 以及最复杂</li>
+</ol>
+<p>通过对分散、独立、异构的数据库数据进行抽取、清理、转换和汇总便得到了数据仓库的数据，这样保证了数据仓库内的数据关于整个企业的一致性。</p>
+<p>数据仓库中的综合数据不能从原有的数据库系统直接得到。因此在数据进入数据仓库之前，必然要经过统一与综合，这一步是数据仓库建设中最关键、最复杂的一步，所要完成的工作有：</p>
+<ul>
+<li><strong>要统一源数据中所有矛盾之处</strong>，如字段的同名异义、异名同义、单位不统一、字长不一致，等等。</li>
+<li>进行数据综合和计算。数据仓库中的数据综合工作可以在从原有数据库抽取数据时生成，但许多是在数据仓库内部生成的，即进入数据仓库以后进行综合生成的。</li>
+</ul>
+<p>下图说明一个保险公司综合数据的简单处理过程，其中数据仓库中与“保险” 主题有关的数据来自于多个不同的操作型系统。这些系统内部数据的命名可能不同，数据格式也可能不同。把不同来源的数据存储到数据仓库之前，需要去除这些不一致。</p>
+<p><img src="https://picx.zhimg.com/80/v2-919665407023f609e898ec84136a5635_1440w.png" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>非易失性（不可更新性）</strong>:</li>
+</ol>
+<p>数据仓库的数据反映的是一段相当长的时间内<strong>历史数据的内容</strong>，是不同时点的数据库快照的集合，以及基于这些快照进行统计、综合和重组的导出数据。</p>
+<p>数据非易失性主要是针对应用而言。数据仓库的用户对数据的操作大多是数据查询或比较复杂的挖掘，一旦数据进入数据仓库以后，一般情况下被较长时间保留。数据仓库中一般有大量的查询操作，但修改和删除操作很少。因此，<strong>数据经加工和集成进入数据仓库后是极少更新的，通常只需要定期的加载和更新</strong>。</p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>时变性</strong>:</li>
+</ol>
+<p>数据仓库包含各种粒度的历史数据。数据仓库中的数据可能与某个特定日期、星期、月份、季度或者年份有关。数据仓库的目的是通过分析企业过去一段时间业务的经营状况，挖掘其中隐藏的模式。虽然数据仓库的用户不能修改数据，但并不是说数据仓库的数据是永远不变的。分析的结果只能反映过去的情况，当业务变化后，挖掘出的模式会失去时效性。因此数据仓库的数据需要更新，以适应决策的需要。从这个角度讲，数据仓库建设是一个项目，更是一个过程。数据仓库的数据随时间的变化表现在以下几个方面：</p>
+<ul>
+<li>数据仓库的数据时限一般要远远长于操作型数据的数据时限。</li>
+<li>操作型系统存储的是当前数据，而数据仓库中的数据是历史数据。</li>
+<li>数据仓库中的数据是按照时间顺序追加的，它们都带有时间属性。</li>
+</ul>
+</div>
+</div>
+<div id="为什么要有数据仓库" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 为什么要有数据仓库<a href="数据仓库的基本概念.html#为什么要有数据仓库" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>通常数据仓库的数据来自各个业务应用系统</strong>。业务系统中的数据形式多种多样，可能是 Oracle、MySQL、SQL Server等关系数据库里的结构化数据，可能是文本、CSV等平面文件或Word、Excel文档中的数据，还可能是HTML、XML等自描述的半结构化数据。这些业务数据经过一系列的数据抽取、转换、清洗，最终以一种统一的格式装载进数据仓库。数据仓库里的数据作为分析用的数据源，<strong>提供给后面的即席查询、 分析系统、数据集市、报表系统、数据挖掘系统等</strong>。</p>
+<p>为什么不能把业务系统的数据直接拿来供即席查询、分析系统、报表系统等使用呢，为什么要经过数据仓库这一步？直接访问很难良好工作.</p>
+<ul>
+<li>某些业务数据由于安全或其他因素不能直接访问。</li>
+<li>业务系统的版本变更很频繁，每次变更都需要重写分析系统并重新测试。</li>
+<li>很难建立和维护汇总数据来源于多个业务系统版本的报表。</li>
+<li>业务系统的列名通常是硬编码，有时仅仅是无意义的字符串，这让编写分析系统更加困难。</li>
+<li>业务系统的数据格式，如日期、数字的格式不统一。</li>
+<li>业务系统的表结构为事务处理性能而优化，有时并不适合查询与分析。</li>
+<li>没有适当的方式将有价值的数据合并进特定应用的数据库。</li>
+<li>没有适当的位置存储元数据。</li>
+<li>用户需要看到的显示数据字段，有时在数据库中并不存在。</li>
+<li>通常事务处理的优先级比分析系统高，所以如果分析系统和事务处理运行在同一硬件之上，分析系统往往性能很差。</li>
+<li>有误用业务数据的风险。</li>
+<li>极有可能影响业务系统的性能。</li>
+</ul>
+<p><strong>尽管需要增加软硬件的投入，但建立独立数据仓库与直接访问业务数据相比，无论是成本还是带来的好处，这样做都是值得的</strong>。随着处理器和存储成本的逐年降低，数据仓库方案的优势更加明显，在经济上也更具可行性。</p>
+</div>
+<div id="数据仓库与数据库的区别" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 数据仓库与数据库的区别<a href="数据仓库的基本概念.html#数据仓库与数据库的区别" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>数据库与数据仓库的区别实际讲的是 OLTP 与 OLAP 的区别。</p>
+<ul>
+<li><p>操作型处理，叫联机事务处理 OLTP（On-Line Transaction Processing，），也可以称面向交易的处理系统，它是针对具体业务在数据库联机的日常操作，通常对少数记录进行查询、修改。<strong>用户较为关心操作的响应时间、数据的安全性、完整性和并发支持的用户数等问题</strong>。传统的数据库系统作为数据管理的主要手段，主要用于操作型处理，像Mysql，Oracle等<a href="https://cloud.tencent.com/product/cdb-overview?from_column=20065&amp;from=20065">关系型数据库</a>一般属于OLTP。</p></li>
+<li><p>分析型处理，叫联机分析处理 OLAP（On-Line Analytical Processing）一般针对某些主题的历史数据进行分析，支持管理决策。</p></li>
+</ul>
+<p><em>首先要明白，数据仓库的出现，并不是要取代数据库。数据库是面向事务的设计，数据仓库是面向主题设计的。数据库一般存储业务数据，数据仓库存储的一般是历史数据。</em></p>
+<p>数据库设计是尽量避免冗余，一般针对某一业务应用进行设计，比如一张简单的User表，记录用户名、密码等简单数据即可，符合业务应用，但是不符合分析。<strong>数据仓库在设计是有意引入冗余，依照分析需求，分析维度、分析指标进行设计</strong>。</p>
+<p><strong>数据库是为捕获数据而设计，数据仓库是为分析数据而设计</strong>。</p>
+<p>以银行业务为例。数据库是事务系统的数据平台，客户在银行做的每笔交易都会写入数据库，被记录下来，这里，可以简单地理解为用数据库记账。数据仓库是分析系统的数据平台，它从事务系统获取数据，并做汇总、加工，为决策者提供决策的依据。比如，某银行某分行一个月发生多少交易，该分行当前存款余额是多少。如果存款又多，消费交易又多，那么该地区就有必要设立ATM了。</p>
+<p>显然，银行的交易量是巨大的，通常以百万甚至千万次来计算。事务系统是实时的，这就要求时效性，客户存一笔钱需要几十秒是无法忍受的，这就要求数据库只能存储很短一段时间的数据。而分析系统是事后的，它要提供关注时间段内所有的有效数据。这些数据是海量的，汇总计算起来也要慢一些，但是，只要能够提供有效的分析数据就达到目的了。</p>
+<p><strong>数据仓库，是在数据库已经大量存在的情况下，为了进一步挖掘数据资源、为了决策需要而产生的，它决不是所谓的“大型数据库”</strong>。</p>
+</div>
+<div id="数据仓库分层架构" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> <strong>数据仓库分层架构</strong><a href="数据仓库的基本概念.html#数据仓库分层架构" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>按照数据流入流出的过程，数据仓库架构可分为：<strong>源数据</strong>、<strong>数据仓库</strong>、<strong>数据应用</strong></p>
+<p><img src="https://picx.zhimg.com/80/v2-f4f43a471f49f49e8af3f0f53bd8f45c_1440w.png" /></p>
+<p>数据仓库的数据来源于不同的源数据，并提供多样的数据应用，数据自下而上流入数据仓库后向上层开放应用，而数据仓库只是中间集成化数据管理的一个平台。</p>
+<ul>
+<li><strong>源数据</strong>：此层数据无任何更改，直接沿用外围系统数据结构和数据，不对外开放；为临时存储层，是接口数据的临时存储区域，为后一步的数据处理做准备。</li>
+<li><strong>数据仓库</strong>：也称为细节层，DW层的数据应该是一致的、准确的、干净的数据，即对源系统数据进行了清洗（去除了杂质）后的数据。</li>
+<li><strong>数据应用</strong>：前端应用直接读取的数据源；根据报表、专题分析需求而计算生成的数据。</li>
+</ul>
+<p>(数据仓库的日常就是管理和绘图ETL 过程)</p>
+<p>数据仓库从各数据源获取数据及在数据仓库内的数据转换和流动都可以认为是ETL（<strong>抽取Extra, 转化Transfer, 装载Load</strong>）的过程，ETL是数据仓库的流水线，也可以认为是数据仓库的血液，它维系着数据仓库中数据的新陈代谢，而数据仓库日常的管理和维护工作的大部分精力就是保持ETL的正常和稳定。</p>
+<p><strong>那么为什么要数据仓库进行分层呢</strong>?</p>
+<ul>
+<li>用空间换时间，通过大量的预处理来提升应用系统的用户体验（效率），因此数据仓库会存在大量冗余的数据；不分层的话，如果源业务系统的业务规则发生变化将会影响整个数据清洗过程，工作量巨大。</li>
+<li>通过数据分层管理可以简化数据清洗的过程，因为把原来一步的工作分到了多个步骤去完成，相当于把一个复杂的工作拆成了多个简单的工作，把一个大的黑盒变成了一个白盒，每一层的处理逻辑都相对简单和容易理解，这样我们比较容易保证每一个步骤的正确性，当数据发生错误的时候，往往我们只需要局部调整某个步骤即可。</li>
+</ul>
+</div>
+<div id="数据仓库架构" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> 数据仓库架构<a href="数据仓库的基本概念.html#数据仓库架构" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="数据集市架构" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> <strong>数据集市架构</strong><a href="数据仓库的基本概念.html#数据集市架构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>据集市是按主题域组织的数据集合，用于支持部门级的决策。有两种类型的数据集市：<strong>独立数据集市</strong>和<strong>从属数据集市</strong>。</p>
+<div id="独立数据集市" class="section level4 hasAnchor" number="2.6.1.1">
+<h4><span class="header-section-number">2.6.1.1</span> <strong>独立数据集市</strong><a href="数据仓库的基本概念.html#独立数据集市" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>独立数据集市集中于部门所关心的单一主题域，数据以部门为基础部署，无须考虑企业级别的信息共享与集成。例如，制造部门、人力资源部门和其他部门都各自有他们自己的数据集市。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-1d0e88ba9f91f030b29ee506b655c126_1440w.png" /></p>
+<p><strong>优点</strong>：</p>
+<p>因为一个部门的业务相对于整个企业要简单，数据量也小得多，所以部门的独立数据集市具有周期短、见效快的特点。</p>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>从业务角度看，当部门的分析需求扩展，或者需要分析跨部门或跨主题域的数据时，独立数据市场会显得力不从心。</li>
+<li>当数据存在歧义，比如同一个产品，在A部门和B部门的定义不同时，将无法在部门间进行信息比较。</li>
+<li>每个部门使用不同的技术，建立不同的ETL的过程，处理不同的事务系统，而在多个独立的数据集市之间还会存在数据的交叉与重叠，甚至会有数据不一致的情况。</li>
+</ul>
+</div>
+<div id="从属数据集市" class="section level4 hasAnchor" number="2.6.1.2">
+<h4><span class="header-section-number">2.6.1.2</span> <strong>从属数据集市</strong><a href="数据仓库的基本概念.html#从属数据集市" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>从属数据集市的数据来源于数据仓库。数据仓库里的数据经过整合、重构、汇总后传递给从属数据集市。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-e0dd26fb43965e16ef2f1e0c102332e7_1440w.png" /></p>
+<p>建立从属数据集市的好处主要有：</p>
+<ul>
+<li><strong>性能</strong>：当数据仓库的查询性能出现问题，可以考虑建立几个从属数据集市，将查询从数据仓库移出到数据集市。</li>
+<li><strong>安全</strong>：每个部门可以完全控制他们自己的数据。</li>
+<li><strong>数据一致</strong>：因为每个数据集市的数据来源都是同一个数据仓库，有效消除了数据不一致的情况。</li>
+</ul>
+</div>
+</div>
+<div id="inmon企业工厂架构" class="section level3 hasAnchor" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> <strong>Inmon企业工厂架构</strong><a href="数据仓库的基本概念.html#inmon企业工厂架构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://pic1.zhimg.com/80/v2-9a893ae4eddc0f88d36702fe9920c84d_1440w.png" /></p>
+<p>上图的前两步不过多介绍，直接从第三步开始。</p>
+<p><strong>企业级数据仓库</strong>：是该架构中的核心组件。正如Inmon数据仓库所定义的，企业级数据仓库是一个细节数据的集成资源库。其中的数据以最低粒度级别被捕获，存储在满足三范式设计的关系数据库中。</p>
+<p><strong>部门级数据集市</strong>：是面向主题数据的部门级视图，数据从企业级数据仓库获取。数据在进入部门数据集市时可能进行聚合。数据集市使用多维模型设计，用于数据分析。重要的一点是，所有的报表工具、BI工具或其他数据分析应用都从数据集市查询数据，而不是直接查询企业级数据仓库。</p>
+</div>
+<div id="kimball数据仓库架构" class="section level3 hasAnchor" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> <strong>Kimball数据仓库架构</strong><a href="数据仓库的基本概念.html#kimball数据仓库架构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://pic1.zhimg.com/80/v2-22b9069c8158c1446d001777fd2a8f5c_1440w.png" /></p>
+<p>对比上一张图可以看到，Kimball与Inmon两种架构的主要区别在于核心数据仓库的设计和建立。</p>
+<p>Kimball的数据仓库包含高粒度的企业数据，使用多维模型设计，这也意味着<strong>数据仓库由星型模式的维度表和事实表构成</strong>。分析系统或报表工具可以直接访问多维数据仓库里的数据。</p>
+<p>在此架构中的数据集市也与Inmon中的不同。这里的<strong>数据集市是一个逻辑概念，只是多维数据仓库中的主题域划分</strong>，并没有自己的物理存储，也可以说是虚拟的数据集市。</p>
+</div>
+<div id="混合型数据仓库架构" class="section level3 hasAnchor" number="2.6.4">
+<h3><span class="header-section-number">2.6.4</span> <strong>混合型数据仓库架构</strong><a href="数据仓库的基本概念.html#混合型数据仓库架构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>所谓的混合型结构，指的是在一个数据仓库环境中，<strong>联合使用Inmon和Kimball两种架构</strong>。</p>
+<p><img src="https://picx.zhimg.com/80/v2-e4695b2c662814f0cd210278b5d901e7_1440w.png" /></p>
+<p>从架构图可以看到，这种架构将Inmon方法中的数据集市部分替换成了一个多维数据仓库，而数据集市则是多维数据仓库上的逻辑视图。</p>
+<p><strong>使用这种架构的好处是</strong>：既可以利用规范化设计消除数据冗余，保证数据的粒度足够细；又可以利用多维结构更灵活地在企业级实现报表和分析。</p>
+</div>
+</div>
+<div id="数据仓库元数据的管理" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> <strong>数据仓库元数据的管理</strong><a href="数据仓库的基本概念.html#数据仓库元数据的管理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>元数据（Meta Date），主要记录数据仓库中模型的定义、各层级间的映射关系、监控数据仓库的数据状态及ETL的任务运行状态</strong>。一般会通过元数据资料库（Metadata Repository）来统一地存储和管理元数据，其主要目的是使数据仓库的设计、部署、操作和管理能达成协同和一致。</p>
+<p>元数据是数据仓库管理系统的重要组成部分，元数据管理是企业级数据仓库中的关键组件，贯穿数据仓库构建的整个过程，直接影响着数据仓库的构建、使用和维护。</p>
+<ul>
+<li>构建数据仓库的主要步骤之一是ETL。这时元数据将发挥重要的作用，它定义了源数据系统到数据仓库的映射、数据转换的规则、数据仓库的逻辑结构、数据更新的规则、数据导入历史记录以及装载周期等相关内容。数据抽取和转换的专家以及数据仓库管理员正是通过元数据高效地构建数据仓库</li>
+<li>用户在使用数据仓库时，通过元数据访问数据，明确数据项的含义以及定制报表。</li>
+<li>数据仓库的规模及其复杂性离不开正确的元数据管理，包括增加或移除外部数据源，改变数据清洗方法，控制出错的查询以及安排备份等。</li>
+</ul>
+<p>元数据可分为技术元数据和业务元数据。<strong>技术元数据</strong>为开发和管理数据仓库的IT 人员使用，它描述了与数据仓库开发、管理和维护相关的数据，包括数据源信息、数据转换描述、数据仓库模型、数据清洗与更新规则、数据映射和访问权限等。而<strong>业务元数据</strong>为管理层和业务分析人员服务，从业务角度描述数据，包括商务术语、数据仓库中有什么数据、数据的位置和数据的可用性等，帮助业务人员更好地理解数据仓库中哪些数据是可用的以及如何使用。</p>
+<p>由上可见，元数据不仅定义了数据仓库中数据的模式、来源、抽取和转换规则等，而且是整个数据仓库系统运行的基础，元数据把数据仓库系统中各个松散的组件联系起来，组成了一个有机的整体。</p>
+</div>
+<div id="数仓常见术语解析" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> <strong>数仓常见术语解析</strong><a href="数据仓库的基本概念.html#数仓常见术语解析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="https://pic1.zhimg.com/80/v2-d6a81ad4ed41cf350e931b5901505701_1440w.png" /></p>
+<div id="数仓名词解释" class="section level3 hasAnchor" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> <strong>数仓名词解释</strong><a href="数据仓库的基本概念.html#数仓名词解释" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="实体" class="section level4 hasAnchor" number="2.8.1.1">
+<h4><span class="header-section-number">2.8.1.1</span> <strong>实体</strong><a href="数据仓库的基本概念.html#实体" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>实体是指依附的主体，就是我们分析的一个对象，比如我们分析商品的销售情况，如华为手机近半年的销售量是多少，那华为手机就是一个实体；我们分析用户的活跃度，用户就是一个实体。当然实体也可以现实中不存在的，比如虚拟的业务对象，活动，会员等都可看做一个实体。</p>
+<p><strong>实体的存在是为了业务分析，作为分析的一个筛选的维度，拥有描述自己的属性，本身具有可分析的价值</strong>。</p>
+</div>
+<div id="维度" class="section level4 hasAnchor" number="2.8.1.2">
+<h4><span class="header-section-number">2.8.1.2</span> <strong>维度</strong><a href="数据仓库的基本概念.html#维度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>维度就是看待问题的角度，分析业务数据，从什么角度分析，就建立什么样的维度。所以维度就是要对数据进行分析时所用的一个量，比如你要分析产品销售情况，你可以选择按商品类别来进行分析，这就构成一个维度，把所有商品类别集合在一起，就构成了维度表。</p>
+</div>
+<div id="度量" class="section level4 hasAnchor" number="2.8.1.3">
+<h4><span class="header-section-number">2.8.1.3</span> <strong>度量</strong><a href="数据仓库的基本概念.html#度量" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>度量是业务流程节点上的一个数值。比如销量，价格，成本等等。</p>
+<p><strong>事实表中的度量可分为三类：完全可加，半可加，不可加</strong>。</p>
+<ol style="list-style-type: decimal">
+<li>完全可加的度量是最灵活，最有用的，比如说销量，销售额等，可进行任意维度汇总；</li>
+<li>半可加的度量可以对某些维度汇总，但不能对所有维度汇总，差额是常见的半可加度量，它除了时间维度外，可以跨所有维度进行加法操作；</li>
+<li>还有一种是完全不可加的，例如：比率。对于这类非可加度量，一种好的方法是，<strong>尽可能存储非可加度量的完全可加分量</strong>，并在计算出最终的非可加事实前，将这些分量汇总到最终的结果集中。</li>
+</ol>
+</div>
+<div id="粒度" class="section level4 hasAnchor" number="2.8.1.4">
+<h4><span class="header-section-number">2.8.1.4</span> <strong>粒度</strong><a href="数据仓库的基本概念.html#粒度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>粒度就是业务流程中对度量的单位，比如商品是按件记录度量，还是按批记录度量。</p>
+<p>在数仓建设中，我们说这是用户粒度的事实表，那么表中每行数据都是一个用户，无重复用户；例如还有销售粒度的表，那么表中每行都是一条销售记录。</p>
+<p><strong>选择合适的粒度级别是数据仓库建设好坏的重要关键内容</strong>，在设计数据粒度时，通常需重点考虑以下因素：</p>
+<ol style="list-style-type: decimal">
+<li>要接受的分析类型、可接受的数据最低粒度和能存储的数据量；</li>
+<li>粒度的层次定义越高，就越不能在该仓库中进行更细致的分析；</li>
+<li>如果存储资源有一定的限制，就只能采用较高的数据粒度划分；</li>
+<li><strong>数据粒度划分策略一定要保证：数据的粒度确实能够满足用户的决策分析需要，这是数据粒度划分策略中最重要的一个准则</strong>。</li>
+</ol>
+</div>
+<div id="口径" class="section level4 hasAnchor" number="2.8.1.5">
+<h4><span class="header-section-number">2.8.1.5</span> <strong>口径</strong><a href="数据仓库的基本概念.html#口径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>口径就是取数逻辑（如何取数的）</strong>，比如<strong>要取的数</strong>是10岁以下儿童中男孩的平均身高，这就是统计的口径。</p>
+</div>
+<div id="指标" class="section level4 hasAnchor" number="2.8.1.6">
+<h4><span class="header-section-number">2.8.1.6</span> <strong>指标</strong><a href="数据仓库的基本概念.html#指标" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>指标是口径的衡量值，也就是最后的结果</strong>。比如最近七天的订单量，一个促销活动的购买转化率等。</p>
+<p>一个指标具体到计算实施，主要有以下几部分组成：</p>
+<ul>
+<li>指标加工逻辑，比如count ,sum, avg</li>
+<li>维度，比如按部门、地域进行指标统计，对应sql中的group by</li>
+<li>业务限定/修饰词，比如以不同的支付渠道来算对应的指标，微信支付的订单退款率，支付宝支付的订单退款率 。对应sql中的where。</li>
+</ul>
+<p>除此之外，指标本身还可以衍生、派生出更多的指标，基于这些特点，可以将指标进行分类：</p>
+<ul>
+<li><p><strong>原子指标</strong>：基本业务事实，没有业务限定、没有维度。比如订单表中的订单量、订单总金额都算原子指标；
+<code>业务方更关心的指标，是有实际业务含义，可以直接取数据的指标。比如店铺近1天订单支付金额就是一个派生指标，会被直接在产品上展示给商家看。 但是这个指标却不能直接从数仓的统一中间层里取数（因为没有现成的事实字段，数仓提供的一般都是大宽表）。需要有一个桥梁连接数仓中间层和业务方的指标需求，于是便有了派生指标</code></p></li>
+<li><p><strong>派生指标</strong>：维度+修饰词+原子指标。店铺近1天订单支付金额中店铺是维度，近1天是一个时间类型的修饰词，支付金额是一个原子指标；
+<code>维度：观察各项指标的角度； 修饰词：维度的一个或某些值，比如维度性别下，男和女就是2种修饰词。</code></p></li>
+<li><p><strong>衍生指标</strong>：比如某一个促销活动的转化率就是衍生指标，因为需要促销投放人数指标和促销订单数指标进行计算得出。
+#### <strong>标签</strong></p></li>
+</ul>
+<p>标签是人为设定的、根据业务场景需求，对目标对象运用一定的算法得到的高度精炼的特征标识。可见标签是经过人为再加工后的结果，如网红、白富美、萝莉。对于有歧义的标签，我们内部可进行标签区分，比如：苹果，我们可以定义苹果指的是水果，苹果手机才指的是手机。</p>
+</div>
+<div id="自然键" class="section level4 hasAnchor" number="2.8.1.7">
+<h4><span class="header-section-number">2.8.1.7</span> <strong>自然键</strong><a href="数据仓库的基本概念.html#自然键" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>由现实中已经存在的属性组成的键，它在业务概念中是唯一的，并具有一定的业务含义，比如商品ID，员工ID。</p>
+<p>以数仓角度看，来自于业务系统的标识符就是自然键，比如业务库中员工的编号。</p>
+</div>
+<div id="持久键" class="section level4 hasAnchor" number="2.8.1.8">
+<h4><span class="header-section-number">2.8.1.8</span> <strong>持久键</strong><a href="数据仓库的基本概念.html#持久键" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>保持永久性不会发生变化。有时也被叫做超自然持久键。比如身份证号属于持久键。</p>
+<p><strong>自然键和持久键区别</strong>：举个例子就明白了，比如说公司员工离职之后又重新入职，他的自然键也就是员工编号发生了变化，但是他的持久键身份证号是不变的。</p>
+</div>
+<div id="代理键" class="section level4 hasAnchor" number="2.8.1.9">
+<h4><span class="header-section-number">2.8.1.9</span> <strong>代理键</strong><a href="数据仓库的基本概念.html#代理键" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>就是不具有业务含义的键。代理键有许多其他的称呼：无意义键、整数键、非自然键、人工键、合成键等。</p>
+<p>代理键就是简单的以按照顺序序列生产的整数表示。产品行的第1行代理键为1，则下一行的代理键为2，如此进行。<strong>代理键的作用仅仅是连接维度表和事实表</strong>。</p>
+</div>
+<div id="退化维度" class="section level4 hasAnchor" number="2.8.1.10">
+<h4><span class="header-section-number">2.8.1.10</span> <strong>退化维度</strong><a href="数据仓库的基本概念.html#退化维度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>退化维度，就是那些看起来像是事实表的一个维度关键字，但实际上并没有对应的维度表</strong>，就是维度属性存储到事实表中，这种存储到事实表中的维度列被称为退化维度。与其他存储在维表中的维度一样，退化维度也可以用来进行事实表的过滤查询、实现聚合操作等。</p>
+<p>那么究竟怎么定义退化维度呢？比如说订单id，这种量级很大的维度，没必要用一张维度表来进行存储，而我们进行数据查询或者数据过滤的时候又非常需要，所以这种就冗余在事实表里面，这种就叫退化维度，citycode这种我们也会冗余在事实表里面，但是<strong>它有对应的维度表，所以它不是退化维度</strong>。</p>
+</div>
+<div id="下钻" class="section level4 hasAnchor" number="2.8.1.11">
+<h4><span class="header-section-number">2.8.1.11</span> <strong>下钻</strong><a href="数据仓库的基本概念.html#下钻" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>这是在数据分析中常见的概念，下钻可以理解成增加维的层次，从而可以<strong>由粗粒度到细粒度来观察数据</strong>，比如对产品销售情况分析时，可以沿着时间维从年到月到日更细粒度的观察数据。从年的维度可以下钻到月的维度、日的维度等。</p>
+</div>
+<div id="上卷" class="section level4 hasAnchor" number="2.8.1.12">
+<h4><span class="header-section-number">2.8.1.12</span> <strong>上卷</strong><a href="数据仓库的基本概念.html#上卷" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>知道了下钻，上卷就容易理解了，它俩是相逆的操作，所以<strong>上卷可以理解为删掉维的某些层</strong>，由细粒度到粗粒度观察数据的操作或沿着维的层次向上聚合汇总数据。</p>
+</div>
+<div id="数据集市" class="section level4 hasAnchor" number="2.8.1.13">
+<h4><span class="header-section-number">2.8.1.13</span> <strong>数据集市</strong><a href="数据仓库的基本概念.html#数据集市" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>数据集市（Data Mart），也叫数据市场，数据集市就是满足特定的部门或者用户的需求，按照多维的方式进行存储，包括定义维度、需要计算的指标、维度的层次等，生成面向决策分析需求的数据立方体。其实就是从数据仓库中抽取出来的一个小合集。</p>
+</div>
+</div>
+<div id="数仓名词之间关系" class="section level3 hasAnchor" number="2.8.2">
+<h3><span class="header-section-number">2.8.2</span> <strong>数仓名词之间关系</strong><a href="数据仓库的基本概念.html#数仓名词之间关系" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="实体表事实表维度表之间的关系" class="section level4 hasAnchor" number="2.8.2.1">
+<h4><span class="header-section-number">2.8.2.1</span> <strong>实体表，事实表，维度表之间的关系</strong><a href="数据仓库的基本概念.html#实体表事实表维度表之间的关系" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li><strong>维度表</strong>：维度表可以看成是用户用来分析一个事实的窗口，它里面的数据应该是对事实的各个方面描述，比如时间维度表，地域维度表，维度表是事实表的一个分析角度。</li>
+<li><strong>事实表</strong>：事实表其实就是通过各种维度和一些指标值的组合来确定一个事实的，比如通过时间维度，地域组织维度，指标值可以去确定在某时某地的一些指标值怎么样的事实。事实表的每一条数据都是几条维度表的数据和指标值交汇而得到的。</li>
+<li><strong>实体表</strong>：实体表就是一个实际对象的表，实体表放的数据一定是一条条客观存在的事物数据，比如说各种商品，它就是客观存在的，所以可以将其设计一个实体表。实时表只描述各个事物，并不存在具体的事实，所以也有人称实体表是无事实的事实表。</li>
+</ol>
+<p>举个例子：比如说手机商场中有苹果手机，华为手机等各品牌各型号的手机，这些数据可以组成一个<strong>手机实体表</strong>，但是表中没有可度量的数据。某天苹果手机卖了15台，华为手机卖了20台，这些手机销售数据属于事实，组成一个<strong>事实表</strong>。这样就可以使用<strong>日期维度表</strong>和<strong>地域维度表</strong>对这个事实表进行各种维度分析。</p>
+</div>
+<div id="指标与标签的区别" class="section level4 hasAnchor" number="2.8.2.2">
+<h4><span class="header-section-number">2.8.2.2</span> <strong>指标与标签的区别</strong><a href="数据仓库的基本概念.html#指标与标签的区别" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>概念不同</li>
+</ul>
+<p><strong>指标</strong>是用来定义、评价和描述特定事物的一种标准或方式。比如：新增用户数、累计用户数、用户活跃率等是衡量用户发展情况的指标；</p>
+<p><strong>标签</strong>是人为设定的、根据业务场景需求，对目标对象运用一定的算法得到的高度精炼的特征标识。可见标签是经过人为再加工后的结果，如网红、白富美、萝莉。</p>
+<ul>
+<li>构成不同</li>
+</ul>
+<p><strong>指标名称</strong>是对事物质与量两方面特点的命名；指标取值是指标在具体时间、地域、条件下的数量表现，如人的体重，指标名称是体重，指标的取值就是120斤；</p>
+<p><strong>标签名称</strong>通常都是形容词或形容词+名词的结构，标签一般是不可量化的，通常是孤立的，除了基础类标签，通过一定算法加工出来的标签一般都没有单位和量纲。如将超过200斤的称为大胖子。</p>
+<ul>
+<li>分类不同</li>
+</ul>
+<p><strong>对指标的分类</strong>：</p>
+<p>按照指标计算逻辑，可以将指标分为原子指标、派生指标、衍生指标三种类型；</p>
+<p>按照对事件描述内容的不同，分为过程性指标和结果性指标；</p>
+<p><strong>对标签的分类</strong>：</p>
+<p>按照标签的变化性分为静态标签和动态标签；</p>
+<p>按照标签的指代和评估指标的不同，可分为定性标签和定量标签；</p>
+<p><strong>指标</strong>最擅长的应用是监测、分析、评价和建模。</p>
+<p><strong>标签</strong>最擅长的应用是标注、刻画、分类和特征提取。</p>
+<p>特别需要指出的是，由于对结果的标注也是一种标签，所以在<a href="https://cloud.tencent.com/product/nlp?from_column=20065&amp;from=20065">自然语言处理</a>和机器学习相关的算法应用场景下，标签对于监督式学习有重要价值，只是单纯的指标难以做到的。而指标在任务分配、绩效管理等领域的作用，也是标签无法做到的。</p>
+</div>
+<div id="维度和指标区别与联系" class="section level4 hasAnchor" number="2.8.2.3">
+<h4><span class="header-section-number">2.8.2.3</span> <strong>维度和指标区别与联系</strong><a href="数据仓库的基本概念.html#维度和指标区别与联系" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>维度就是数据的观察角度，即从哪个角度去分析问题，看待问题。</p>
+<p>指标就是从维度的基础上去衡算这个结果的值。</p>
+<p>维度一般是一个离散的值，比如时间维度上每一个独立的日期或地域，因此统计时，可以把维度相同记录的聚合在一起，应用聚合函数做累加、均值、最大值、最小值等聚合计算。</p>
+<p>指标就是被聚合的通计算，即聚合运算的结果，一般是一个连续的值。</p>
+</div>
+<div id="自然键与代理键在数仓的使用区别" class="section level4 hasAnchor" number="2.8.2.4">
+<h4><span class="header-section-number">2.8.2.4</span> <strong>自然键与代理键在数仓的使用区别</strong><a href="数据仓库的基本概念.html#自然键与代理键在数仓的使用区别" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>数据仓库中维度表与事实表的每个连接应该基于无实际含义的整数代理键。避免使用自然键作为维度表的主键</strong>。</p>
+</div>
+<div id="数据集市和数据仓库的关系" class="section level4 hasAnchor" number="2.8.2.5">
+<h4><span class="header-section-number">2.8.2.5</span> <strong>数据集市和数据仓库的关系</strong><a href="数据仓库的基本概念.html#数据集市和数据仓库的关系" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>数据集市是企业级数据仓库的一个子集</strong>，他主要面向部门级业务，并且只面向某个特定的主题。为了解决灵活性和性能之间的矛盾，数据集市就是数据仓库体系结构中增加的一种小型的部门或工作组级别的数据仓库。数据集市存储为特定用户预先计算好的数据，从而满足用户对性能的需求。数据集市可以在一定程度上缓解访问数据仓库的瓶颈。</p>
+<p><strong>数据集市和数据仓库的主要区别</strong>：数据仓库是企业级的，能为整个企业各个部门的运行提供决策支持手段；而数据集市则是一种微型的数据仓库,它通常有更少的数据,更少的主题区域,以及更少的历史数据,因此是部门级的，一般只能为某个局部范围内的管理人员服务，因此也称之为部门级数据仓库。</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="离线数仓建设核心.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 实时计算 | Data Warehouse</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 实时计算 | Data Warehouse" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 实时计算 | Data Warehouse" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="米霖" />
+
+
+<meta name="date" content="2023-01-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="离线数仓建设.html"/>
+<link rel="next" href="实时数仓建设.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Warehouse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
+<li class="chapter" data-level="2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html"><i class="fa fa-check"></i><b>2</b> 数据仓库的基本概念</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓架构"><i class="fa fa-check"></i><b>2.1</b> 数仓架构</a></li>
+<li class="chapter" data-level="2.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库基本概念"><i class="fa fa-check"></i><b>2.2</b> 数据仓库基本概念</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#基本特征"><i class="fa fa-check"></i><b>2.2.1</b> <strong>基本特征</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#为什么要有数据仓库"><i class="fa fa-check"></i><b>2.3</b> 为什么要有数据仓库</a></li>
+<li class="chapter" data-level="2.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库与数据库的区别"><i class="fa fa-check"></i><b>2.4</b> 数据仓库与数据库的区别</a></li>
+<li class="chapter" data-level="2.5" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库分层架构"><i class="fa fa-check"></i><b>2.5</b> <strong>数据仓库分层架构</strong></a></li>
+<li class="chapter" data-level="2.6" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库架构"><i class="fa fa-check"></i><b>2.6</b> 数据仓库架构</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据集市架构"><i class="fa fa-check"></i><b>2.6.1</b> <strong>数据集市架构</strong></a></li>
+<li class="chapter" data-level="2.6.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#inmon企业工厂架构"><i class="fa fa-check"></i><b>2.6.2</b> <strong>Inmon企业工厂架构</strong></a></li>
+<li class="chapter" data-level="2.6.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#kimball数据仓库架构"><i class="fa fa-check"></i><b>2.6.3</b> <strong>Kimball数据仓库架构</strong></a></li>
+<li class="chapter" data-level="2.6.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#混合型数据仓库架构"><i class="fa fa-check"></i><b>2.6.4</b> <strong>混合型数据仓库架构</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库元数据的管理"><i class="fa fa-check"></i><b>2.7</b> <strong>数据仓库元数据的管理</strong></a></li>
+<li class="chapter" data-level="2.8" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓常见术语解析"><i class="fa fa-check"></i><b>2.8</b> <strong>数仓常见术语解析</strong></a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词解释"><i class="fa fa-check"></i><b>2.8.1</b> <strong>数仓名词解释</strong></a></li>
+<li class="chapter" data-level="2.8.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词之间关系"><i class="fa fa-check"></i><b>2.8.2</b> <strong>数仓名词之间关系</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html"><i class="fa fa-check"></i><b>3</b> <strong>离线数仓建设核心</strong></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓分层"><i class="fa fa-check"></i><b>3.1</b> <strong>数仓分层</strong></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据源层odsoperational-data-store"><i class="fa fa-check"></i><b>3.1.1</b> <strong>数据源层：ODS（Operational Data Store）</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据仓库层dwdata-warehouse"><i class="fa fa-check"></i><b>3.1.2</b> <strong>数据仓库层：DW（Data Warehouse）</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据应用层appapplication"><i class="fa fa-check"></i><b>3.1.3</b> <strong>数据应用层：APP（Application）</strong></a></li>
+<li class="chapter" data-level="3.1.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维表层dimdimension"><i class="fa fa-check"></i><b>3.1.4</b> <strong>维表层：DIM（Dimension）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓建模方法"><i class="fa fa-check"></i><b>3.2</b> <strong>数仓建模方法</strong></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#范式建模法third-normal-form3nf"><i class="fa fa-check"></i><b>3.2.1</b> <strong>范式建模法（Third Normal Form，3NF）</strong></a></li>
+<li class="chapter" data-level="3.2.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模法dimensional-modeling"><i class="fa fa-check"></i><b>3.2.2</b> <strong>维度建模法（Dimensional Modeling）</strong></a></li>
+<li class="chapter" data-level="3.2.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#实体建模法entity-modeling"><i class="fa fa-check"></i><b>3.2.3</b> <strong>实体建模法（Entity Modeling）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模详解"><i class="fa fa-check"></i><b>3.3</b> <strong>维度建模详解</strong></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模中表的类型"><i class="fa fa-check"></i><b>3.3.1</b> <strong>维度建模中表的类型</strong></a></li>
+<li class="chapter" data-level="3.3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#事实表"><i class="fa fa-check"></i><b>3.3.2</b> <strong>事实表</strong></a></li>
+<li class="chapter" data-level="3.3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度表"><i class="fa fa-check"></i><b>3.3.3</b> 维度表</a></li>
+<li class="chapter" data-level="3.3.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模三种模式"><i class="fa fa-check"></i><b>3.3.4</b> 维度建模三种模式</a></li>
+<li class="chapter" data-level="3.3.5" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模过程"><i class="fa fa-check"></i><b>3.3.5</b> 维度建模过程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="离线数仓建设.html"><a href="离线数仓建设.html"><i class="fa fa-check"></i><b>4</b> 离线数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#业务理解"><i class="fa fa-check"></i><b>4.1</b> 业务理解</a></li>
+<li class="chapter" data-level="4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#早期规划"><i class="fa fa-check"></i><b>4.2</b> 早期规划</a></li>
+<li class="chapter" data-level="4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据中台"><i class="fa fa-check"></i><b>4.3</b> 数据中台</a></li>
+<li class="chapter" data-level="4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数仓建设"><i class="fa fa-check"></i><b>4.4</b> 数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型"><i class="fa fa-check"></i><b>4.4.1</b> 模型</a></li>
+<li class="chapter" data-level="4.4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型分层"><i class="fa fa-check"></i><b>4.4.2</b> 模型分层</a></li>
+<li class="chapter" data-level="4.4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据流向"><i class="fa fa-check"></i><b>4.4.3</b> 数据流向</a></li>
+<li class="chapter" data-level="4.4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#规范"><i class="fa fa-check"></i><b>4.4.4</b> 规范</a></li>
+<li class="chapter" data-level="4.4.5" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据层具体实现"><i class="fa fa-check"></i><b>4.4.5</b> 数据层具体实现</a></li>
+<li class="chapter" data-level="4.4.6" data-path="离线数仓建设.html"><a href="离线数仓建设.html#总结"><i class="fa fa-check"></i><b>4.4.6</b> 总结</a></li>
+<li class="chapter" data-level="4.4.7" data-path="离线数仓建设.html"><a href="离线数仓建设.html#实际生产中注意事项"><i class="fa fa-check"></i><b>4.4.7</b> 实际生产中注意事项</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="实时计算.html"><a href="实时计算.html"><i class="fa fa-check"></i><b>5</b> 实时计算</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="实时计算.html"><a href="实时计算.html#实时计算应用场景"><i class="fa fa-check"></i><b>5.1</b> 实时计算应用场景</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="实时计算.html"><a href="实时计算.html#实时智能推荐"><i class="fa fa-check"></i><b>5.1.1</b> 实时智能推荐</a></li>
+<li class="chapter" data-level="5.1.2" data-path="实时计算.html"><a href="实时计算.html#实时欺诈检测"><i class="fa fa-check"></i><b>5.1.2</b> 实时欺诈检测</a></li>
+<li class="chapter" data-level="5.1.3" data-path="实时计算.html"><a href="实时计算.html#舆情分析"><i class="fa fa-check"></i><b>5.1.3</b> 舆情分析</a></li>
+<li class="chapter" data-level="5.1.4" data-path="实时计算.html"><a href="实时计算.html#复杂事件处理"><i class="fa fa-check"></i><b>5.1.4</b> 复杂事件处理</a></li>
+<li class="chapter" data-level="5.1.5" data-path="实时计算.html"><a href="实时计算.html#实时机器学习"><i class="fa fa-check"></i><b>5.1.5</b> 实时机器学习</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="实时计算.html"><a href="实时计算.html#实时计算总览"><i class="fa fa-check"></i><b>5.2</b> 实时计算总览</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="实时计算.html"><a href="实时计算.html#数据同步"><i class="fa fa-check"></i><b>5.2.1</b> 数据同步：</a></li>
+<li class="chapter" data-level="5.2.2" data-path="实时计算.html"><a href="实时计算.html#数据存储"><i class="fa fa-check"></i><b>5.2.2</b> 数据存储：</a></li>
+<li class="chapter" data-level="5.2.3" data-path="实时计算.html"><a href="实时计算.html#数据计算"><i class="fa fa-check"></i><b>5.2.3</b> 数据计算：</a></li>
+<li class="chapter" data-level="5.2.4" data-path="实时计算.html"><a href="实时计算.html#实时应用"><i class="fa fa-check"></i><b>5.2.4</b> 实时应用：</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="实时计算.html"><a href="实时计算.html#实时架构"><i class="fa fa-check"></i><b>5.3</b> 实时架构</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="实时计算.html"><a href="实时计算.html#lambda架构"><i class="fa fa-check"></i><b>5.3.1</b> Lambda架构</a></li>
+<li class="chapter" data-level="5.3.2" data-path="实时计算.html"><a href="实时计算.html#为什么lambda架构要分成两条线计算"><i class="fa fa-check"></i><b>5.3.2</b> 为什么Lambda架构要分成两条线计算？</a></li>
+<li class="chapter" data-level="5.3.3" data-path="实时计算.html"><a href="实时计算.html#lambda架构有没有缺点"><i class="fa fa-check"></i><b>5.3.3</b> Lambda架构有没有缺点</a></li>
+<li class="chapter" data-level="5.3.4" data-path="实时计算.html"><a href="实时计算.html#kappa架构"><i class="fa fa-check"></i><b>5.3.4</b> Kappa架构</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="实时数仓建设.html"><a href="实时数仓建设.html"><i class="fa fa-check"></i><b>6</b> 实时数仓建设</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时计算初期"><i class="fa fa-check"></i><b>6.1</b> 实时计算初期</a></li>
+<li class="chapter" data-level="6.2" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时数仓建设-1"><i class="fa fa-check"></i><b>6.2</b> 实时数仓建设</a></li>
+<li class="chapter" data-level="6.3" data-path="实时数仓建设.html"><a href="实时数仓建设.html#lambda架构的实时数仓"><i class="fa fa-check"></i><b>6.3</b> Lambda架构的实时数仓</a></li>
+<li class="chapter" data-level="6.4" data-path="实时数仓建设.html"><a href="实时数仓建设.html#kappa架构的实时数仓"><i class="fa fa-check"></i><b>6.4</b> Kappa架构的实时数仓</a></li>
+<li class="chapter" data-level="6.5" data-path="实时数仓建设.html"><a href="实时数仓建设.html#流批结合的实时数仓"><i class="fa fa-check"></i><b>6.5</b> 流批结合的实时数仓</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html"><i class="fa fa-check"></i><b>7</b> 搭建数据仓库</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#基于flink-sql从0到1构建一个实时数仓"><i class="fa fa-check"></i><b>7.1</b> 基于Flink SQL从0到1构建一个实时数仓</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#架构设计"><i class="fa fa-check"></i><b>7.1.1</b> 架构设计</a></li>
+<li class="chapter" data-level="7.1.2" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#业务数据准备"><i class="fa fa-check"></i><b>7.1.2</b> 业务数据准备</a></li>
+<li class="chapter" data-level="7.1.3" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#数据处理流程"><i class="fa fa-check"></i><b>7.1.3</b> 数据处理流程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html"><i class="fa fa-check"></i><b>8</b> 数仓规范建设指南</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓公共开发规范"><i class="fa fa-check"></i><b>8.1</b> 数仓公共开发规范</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#层次调用规范"><i class="fa fa-check"></i><b>8.1.1</b> 层次调用规范</a></li>
+<li class="chapter" data-level="8.1.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据类型规范"><i class="fa fa-check"></i><b>8.1.2</b> 数据类型规范</a></li>
+<li class="chapter" data-level="8.1.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据冗余规范"><i class="fa fa-check"></i><b>8.1.3</b> 数据冗余规范</a></li>
+<li class="chapter" data-level="8.1.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#null字段处理规范"><i class="fa fa-check"></i><b>8.1.4</b> NULL字段处理规范</a></li>
+<li class="chapter" data-level="8.1.5" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标口径规范"><i class="fa fa-check"></i><b>8.1.5</b> 指标口径规范</a></li>
+<li class="chapter" data-level="8.1.6" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据表处理规范"><i class="fa fa-check"></i><b>8.1.6</b> 数据表处理规范</a></li>
+<li class="chapter" data-level="8.1.7" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表的生命周期管理"><i class="fa fa-check"></i><b>8.1.7</b> 表的生命周期管理</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓各层开发规范"><i class="fa fa-check"></i><b>8.2</b> 数仓各层开发规范</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#ods层设计规范"><i class="fa fa-check"></i><b>8.2.1</b> ODS层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#公共维度层设计规范"><i class="fa fa-check"></i><b>8.3</b> 公共维度层设计规范</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#设计准则"><i class="fa fa-check"></i><b>8.3.1</b> 设计准则</a></li>
+<li class="chapter" data-level="8.3.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dwd明细层设计规范"><i class="fa fa-check"></i><b>8.3.2</b> DWD明细层设计规范</a></li>
+<li class="chapter" data-level="8.3.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dws公共汇总层设计规范"><i class="fa fa-check"></i><b>8.3.3</b> DWS公共汇总层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓命名规范"><i class="fa fa-check"></i><b>8.4</b> 数仓命名规范</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#词根设计规范"><i class="fa fa-check"></i><b>8.4.1</b> 词根设计规范</a></li>
+<li class="chapter" data-level="8.4.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓表的命名规范如下"><i class="fa fa-check"></i><b>8.4.2</b> 数仓表的命名规范如下：</a></li>
+<li class="chapter" data-level="8.4.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表命名规范"><i class="fa fa-check"></i><b>8.4.3</b> 表命名规范</a></li>
+<li class="chapter" data-level="8.4.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标命名规范"><i class="fa fa-check"></i><b>8.4.4</b> 指标命名规范</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="其他一些内容.html"><a href="其他一些内容.html"><i class="fa fa-check"></i><b>9</b> 其他一些内容</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发挂件角色"><i class="fa fa-check"></i><b>9.1</b> 数据仓库开发挂件角色</a></li>
+<li class="chapter" data-level="9.2" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发需要掌握的技能"><i class="fa fa-check"></i><b>9.2</b> 数据仓库开发需要掌握的技能</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="其他一些内容.html"><a href="其他一些内容.html#如何额进行elt"><i class="fa fa-check"></i><b>9.2.1</b> 如何额进行ELT</a></li>
+<li class="chapter" data-level="9.2.2" data-path="其他一些内容.html"><a href="其他一些内容.html#一个简单的etl例子"><i class="fa fa-check"></i><b>9.2.2</b> 一个简单的ETL例子</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Warehouse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="实时计算" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> 实时计算<a href="实时计算.html#实时计算" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>实时计算一般都是针对海量数据进行的，并且要求为秒级。由于大数据兴起之初，Hadoop并没有给出实时计算解决方案，随后Storm，SparkStreaming，Flink等实时计算框架应运而生，而Kafka，ES的兴起使得实时计算领域的技术越来越完善，而随着物联网，机器学习等技术的推广，实时流式计算将在这些领域得到充分的应用。</p>
+<p>实时计算的三个特征：</p>
+<ol style="list-style-type: decimal">
+<li>无限数据：无限数据指的是一种不断增长的，基本上无限的数据集。这些通常被称为“流数据”，而与之相对的是有限的数据集。</li>
+<li>无界数据处理：一种持续的数据处理模式,能够通过处理引擎重复的去处理上面的无限数据，是能够突破有限数据处理引擎的瓶颈的。</li>
+<li>低延迟：延迟是多少并没有明确的定义。但我们都知道数据的价值将随着时间的流逝降低，时效性将是需要持续解决的问题。</li>
+</ol>
+<p>现在大数据应用比较火爆的领域，比如推荐系统在实践之初受技术所限，可能要一分钟，一小时，甚至更久对用户进行推荐，这远远不能满足需要，我们需要更快的完成对数据的处理，而不是进行离线的批处理。</p>
+<div id="实时计算应用场景" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 实时计算应用场景<a href="实时计算.html#实时计算应用场景" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="实时智能推荐" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> 实时智能推荐<a href="实时计算.html#实时智能推荐" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>智能推荐会根据用户历史的购买或浏览行为，通过推荐算法训练模型，预测用户未来可能会购买的物品或喜爱的资讯。对个人来说，推荐系统起着信息过滤的作用，对Web/App服务端来说，推荐系统起着满足用户个性化需求，提升用户满意度的作用。推荐系统本身也在飞速发展，除了算法越来越完善，对时延的要求也越来越苛刻和实时化。利用Flink流计算帮助用户构建更加实时的智能推荐系统，对用户行为指标进行实时计算，对模型进行实时更新，对用户指标进行实时预测，并将预测的信息推送给Web/App端，帮助用户获取想要的商品信息，另一方面也帮助企业提升销售额，创造更大的商业价值。</p>
+</div>
+<div id="实时欺诈检测" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> 实时欺诈检测<a href="实时计算.html#实时欺诈检测" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在金融领域的业务中，常常出现各种类型的欺诈行为，例如信用卡欺诈，信贷申请欺诈等，而如何保证用户和公司的资金安全，是近年来许多金融公司及银行共同面对的挑战。随着不法分子欺诈手段的不断升级，传统的反欺诈手段已经不足以解决目前所面临的问题。以往可能需要几个小时才能通过交易数据计算出用户的行为指标，然后通过规则判别出具有欺诈行为嫌疑的用户，再进行案件调查处理，在这种情况下资金可能早已被不法分子转移，从而给企业和用户造成大量的经济损失。而运用Flink流式计算技术能够在毫秒内就完成对欺诈行为判断指标的计算，然后实时对交易流水进行实时拦截，避免因为处理不及时而导致的经济损失。</p>
+</div>
+<div id="舆情分析" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> 舆情分析<a href="实时计算.html#舆情分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>有的客户需要做舆情分析，要求所有数据存放若干年，舆情数据每日数据量可能超百万，年数据量可达到几十亿的数据。而且爬虫爬过来的数据是舆情，通过大数据技术进行分词之后得到的可能是大段的网友评论，客户往往要求对舆情进行查询，做全文本搜索，并要求响应时间控制在秒级。爬虫将数据爬到大数据平台的Kafka里，在里面做Flink流处理，去重去噪做语音分析，写到ElasticSearch里。大数据的一个特点是多数据源，大数据平台能根据不同的场景选择不同的数据源。</p>
+</div>
+<div id="复杂事件处理" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> 复杂事件处理<a href="实时计算.html#复杂事件处理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>对于复杂事件处理，比较常见的集中于工业领域，例如对车载传感器，机械设备等实时故障检测，这些业务类型通常数据量都非常大，且对数据处理的时效性要求非常高。通过利用Flink提供的CEP进行时间模式的抽取，同时应用Flink的Sql进行事件数据的转换，在流式系统中构建实施规则引擎，一旦事件触发报警规则，便立即将告警结果通知至下游通知系统，从而实现对设备故障快速预警检测，车辆状态监控等目的。</p>
+</div>
+<div id="实时机器学习" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> 实时机器学习<a href="实时计算.html#实时机器学习" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>实时机器学习是一个更宽泛的概念，传统静态的机器学习主要侧重于静态的模型和历史数据进行训练并提供预测。很多时候用户的短期行为，对模型有修正作用，或者说是对业务判断有预测作用。对系统来说，需要采集用户最近的行为并进行特征工程，然后给到实时机器学习系统进行机器学习。如果动态地实施新规则，或是推出新广告，就会有很大的参考价值。</p>
+</div>
+</div>
+<div id="实时计算总览" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 实时计算总览<a href="实时计算.html#实时计算总览" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="https://pic1.zhimg.com/80/v2-5f3fd990f7375b747ac463f5f75f6a14_1440w.png" /></p>
+<div id="数据同步" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> 数据同步：<a href="实时计算.html#数据同步" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在上面这张架构图中，数据从Web平台中产生，通过数据同步系统导入到大数据平台，由于数据源不同，这里的数据同步系统实际上是多个相关系统的组合。数据库同步通常用 Sqoop，日志同步可以选择 Flume等，不同的数据源产生的数据质量可能差别很大，数据库中的格式化数据直接导入大数据系统即可，而日志和爬虫产生的数据就需要进行大量的清洗、转化处理才能有效使用。</p>
+</div>
+<div id="数据存储" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> 数据存储：<a href="实时计算.html#数据存储" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>该层对原始数据、清洗关联后的明细数据进行存储，基于统一的实时数据模型分层理念，将不同应用场景的数据分别存储在 Kafka、HDFS、Kudu、 Clickhouse、Hbase等存储中。</p>
+</div>
+<div id="数据计算" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> 数据计算：<a href="实时计算.html#数据计算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>计算层主要使用 Flink、Spark、Presto 以及 ClickHouse 自带的计算能力等四种计算引擎，Flink计算引擎主要用于实时数据同步、 流式 ETL、关键系统秒级实时指标计算场景，Spark SQL 主要用于复杂多维分析的准实时指标计算需求场景，Presto 和 ClickHouse主要满足多维自助分析、对查询响应时间要求不太高的场景。</p>
+</div>
+<div id="实时应用" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> 实时应用：<a href="实时计算.html#实时应用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>以统一查询服务对各个业务线数据场景进行支持，业务主要包括实时大屏、实时数据产品、实时 OLAP、实时特征等。</p>
+<p>当然一个好的大数据平台不能缺少元数据管理及数据治理：</p>
+<ol style="list-style-type: decimal">
+<li>元数据及指标管理：主要对实时的Kafka表、Kudu表、Clickhouse表、Hive表等进行统一管理，以数仓模型中表的命名方式规范表的命名，明确每张表的字段含义、使用方，指标管理则是尽量通过指标管理系统将所有的实时指标统一管理起来，明确计算口径，提供给不同的业务方使用；</li>
+<li>数据质量及血缘分析：数据质量分为平台监控和数据监控两个部分，血缘分析则主要是对实时数据依赖关系、实时任务的依赖关系进行分析。</li>
+</ol>
+<p>以上架构只是大数据平台通用的数据模型，如果要具体的建设，需要考虑以下情况，业务需求需要实时还是准实时即可，数据时效性是秒级还是分钟级等。</p>
+<ul>
+<li>在调度开销方面，准实时数据是批处理过程，因此仍然需要调度系统支持，调度频率较高，而实时数据却没有调度开销；</li>
+<li>在业务灵活性方面，因为准实时数据是基于 ETL 或 OLAP 引擎实现，灵活性优于基于流计算的方式；</li>
+<li>在对数据晚到的容忍度方面，因为准实时数据可以基于一个周期内的数据进行全量计算，因此对于数据晚到的容忍度也是比较高的，而实时数据使用的是增量计算，对于数据晚到的容忍度更低一些；</li>
+<li>在适用场景方面，准实时数据主要用于有实时性要求但不太高、涉及多表关联和业务变更频繁的场景，如交易类型的实时分析，实时数据则更适用于实时性要求高、数据量大的场景，如实时特征、流量类型实时分析等场景。</li>
+</ul>
+</div>
+</div>
+<div id="实时架构" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 实时架构<a href="实时计算.html#实时架构" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>通常有两种技术架构Lambda和Kappa.</p>
+<div id="lambda架构" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Lambda架构<a href="实时计算.html#lambda架构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://pica.zhimg.com/80/v2-0bfddddf94138ecb43947db20b5d5be1_1440w.png" /></p>
+<p>数据从底层的数据源开始，经过Kafka、Flume等数据组件进行收集，然后分成两条线进行计算：</p>
+<ul>
+<li>一条线是进入流式计算平台（例如 Storm、Flink或者SparkStreaming），去计算实时的一些指标；</li>
+<li>另一条线进入批量数据处理离线计算平台（例如Mapreduce、Hive，Spark SQL），去计算T+1的相关业务指标，这些指标需要隔日才能看见。</li>
+</ul>
+</div>
+<div id="为什么lambda架构要分成两条线计算" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> 为什么Lambda架构要分成两条线计算？<a href="实时计算.html#为什么lambda架构要分成两条线计算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>假如整个系统只有一个批处理层，会导致用户必须等待很久才能获取计算结果，一般有几个小时的延迟。电商数据分析部门只能查看前一天的统计分析结果，无法获取当前的结果，这对于实时决策来说有一个巨大的时间鸿沟，很可能导致管理者错过最佳决策时机。</p>
+<p>Lambda架构属于较早的一种架构方式，早期的流处理不如现在这样成熟，在准确性、扩展性和容错性上，流处理层无法直接取代批处理层，只能给用户提供一个近似结果，还不能为用户提供一个一致准确的结果。因此Lambda架构中，出现了批处理和流处理并存的现象。</p>
+<p>在 Lambda 架构中，每层都有自己所肩负的任务。</p>
+<ol style="list-style-type: decimal">
+<li>批处理层存储管理主数据集（不可变的数据集）和预先批处理计算好的视图：</li>
+</ol>
+<p>批处理层使用可处理大量数据的分布式处理系统预先计算结果。它通过处理所有的已有历史数据来实现数据的准确性。这意味着它是基于完整的数据集来重新计算的，能够修复任何错误，然后更新现有的数据视图。输出通常存储在只读数据库中，更新则完全取代现有的预先计算好的视图。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>流处理层会实时处理新来的大数据：</li>
+</ol>
+<p>流处理层通过提供最新数据的实时视图来最小化延迟。流处理层所生成的数据视图可能不如批处理层最终生成的视图那样准确或完整，但它们几乎在收到数据后立即可用。而当同样的数据在批处理层处理完成后，在速度层的数据就可以被替代掉了。</p>
+</div>
+<div id="lambda架构有没有缺点" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Lambda架构有没有缺点<a href="实时计算.html#lambda架构有没有缺点" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lambda架构经历多年的发展，其优点是稳定，对于实时计算部分的计算成本可控，批量处理可以用晚上的时间来整体批量计算，这样把实时计算和离线计算高峰分开，这种架构支撑了数据行业的早期发展，但是它也有一些致命缺点，并在大数据3.0时代越来越不适应数据分析业务的需求。缺点如下：</p>
+<ul>
+<li>使用两套大数据处理引擎：维护两个复杂的分布式系统，成本非常高。</li>
+<li>批量计算在计算窗口内无法完成：在IOT时代，数据量级越来越大，经常发现夜间只有4、5个小时的时间窗口，已经无法完成白天20多个小时累计的数据，保证早上上班前准时出数据已成为每个大数据团队头疼的问题。</li>
+<li>数据源变化都要重新开发，开发周期长：每次数据源的格式变化，业务的逻辑变化都需要针对ETL和Streaming做开发修改，整体开发周期很长，业务反应不够迅速。</li>
+</ul>
+<p>导致 Lambda 架构的缺点根本原因是要同时维护两套系统架构：批处理层和速度层。我们已经知道，在架构中加入批处理层是因为从批处理层得到的结果具有高准确性，而加入速度层是因为它在处理大规模数据时具有低延时性。</p>
+</div>
+<div id="kappa架构" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Kappa架构<a href="实时计算.html#kappa架构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>这种架构只关注流式计算，数据以流的方式被采集过来，实时计算引擎将计算结果放入数据服务层以供查询。可以认为Kappa架构是Lambda架构的一个简化版本，只是去除掉了Lambda架构中的离线批处理部分；</p>
+<p><img src="https://pica.zhimg.com/80/v2-3f3256daa58e3db475de82e2d4b7360b_1440w.png" /></p>
+<ol style="list-style-type: decimal">
+<li>Kappa架构的兴起主要有两个原因：</li>
+</ol>
+<ul>
+<li>Kafka不仅起到消息队列的作用，也可以保存更长时间的历史数据，以替代Lambda架构中批处理层数据仓库部分。流处理引擎以一个更早的时间作为起点开始消费，起到了批处理的作用。</li>
+<li>Flink流处理引擎解决了事件乱序下计算结果的准确性问题。</li>
+</ul>
+<p>Kappa架构相对更简单，实时性更好，所需的计算资源远小于Lambda架构，随着实时处理的需求在不断增长，更多的企业开始使用Kappa架构。但这不意味着kappa架构能够取代Lambda架构。</p>
+<p>Lambda和kappa架构都有各自的适用领域；例如流处理与批处理分析流程比较统一，且允许一定的容错，用Kappa比较合适，少量关键指标（例如交易金额、业绩统计等）使用Lambda架构进行批量计算，增加一次校对过程。</p>
+<p>还有一些比较复杂的场景，批处理与流处理产生不同的结果（使用不同的机器学习模型，专家系统，或者实时计算难以处理的复杂计算），可能更适合Lambda架构。</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="离线数仓建设.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="实时数仓建设.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-citations.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

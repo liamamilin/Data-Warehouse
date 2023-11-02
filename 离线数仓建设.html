@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 离线数仓建设 | Data Warehouse</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 离线数仓建设 | Data Warehouse" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 离线数仓建设 | Data Warehouse" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="米霖" />
+
+
+<meta name="date" content="2023-01-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="离线数仓建设核心.html"/>
+<link rel="next" href="实时计算.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Warehouse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
+<li class="chapter" data-level="2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html"><i class="fa fa-check"></i><b>2</b> 数据仓库的基本概念</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓架构"><i class="fa fa-check"></i><b>2.1</b> 数仓架构</a></li>
+<li class="chapter" data-level="2.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库基本概念"><i class="fa fa-check"></i><b>2.2</b> 数据仓库基本概念</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#基本特征"><i class="fa fa-check"></i><b>2.2.1</b> <strong>基本特征</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#为什么要有数据仓库"><i class="fa fa-check"></i><b>2.3</b> 为什么要有数据仓库</a></li>
+<li class="chapter" data-level="2.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库与数据库的区别"><i class="fa fa-check"></i><b>2.4</b> 数据仓库与数据库的区别</a></li>
+<li class="chapter" data-level="2.5" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库分层架构"><i class="fa fa-check"></i><b>2.5</b> <strong>数据仓库分层架构</strong></a></li>
+<li class="chapter" data-level="2.6" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库架构"><i class="fa fa-check"></i><b>2.6</b> 数据仓库架构</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据集市架构"><i class="fa fa-check"></i><b>2.6.1</b> <strong>数据集市架构</strong></a></li>
+<li class="chapter" data-level="2.6.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#inmon企业工厂架构"><i class="fa fa-check"></i><b>2.6.2</b> <strong>Inmon企业工厂架构</strong></a></li>
+<li class="chapter" data-level="2.6.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#kimball数据仓库架构"><i class="fa fa-check"></i><b>2.6.3</b> <strong>Kimball数据仓库架构</strong></a></li>
+<li class="chapter" data-level="2.6.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#混合型数据仓库架构"><i class="fa fa-check"></i><b>2.6.4</b> <strong>混合型数据仓库架构</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库元数据的管理"><i class="fa fa-check"></i><b>2.7</b> <strong>数据仓库元数据的管理</strong></a></li>
+<li class="chapter" data-level="2.8" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓常见术语解析"><i class="fa fa-check"></i><b>2.8</b> <strong>数仓常见术语解析</strong></a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词解释"><i class="fa fa-check"></i><b>2.8.1</b> <strong>数仓名词解释</strong></a></li>
+<li class="chapter" data-level="2.8.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词之间关系"><i class="fa fa-check"></i><b>2.8.2</b> <strong>数仓名词之间关系</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html"><i class="fa fa-check"></i><b>3</b> <strong>离线数仓建设核心</strong></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓分层"><i class="fa fa-check"></i><b>3.1</b> <strong>数仓分层</strong></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据源层odsoperational-data-store"><i class="fa fa-check"></i><b>3.1.1</b> <strong>数据源层：ODS（Operational Data Store）</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据仓库层dwdata-warehouse"><i class="fa fa-check"></i><b>3.1.2</b> <strong>数据仓库层：DW（Data Warehouse）</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据应用层appapplication"><i class="fa fa-check"></i><b>3.1.3</b> <strong>数据应用层：APP（Application）</strong></a></li>
+<li class="chapter" data-level="3.1.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维表层dimdimension"><i class="fa fa-check"></i><b>3.1.4</b> <strong>维表层：DIM（Dimension）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓建模方法"><i class="fa fa-check"></i><b>3.2</b> <strong>数仓建模方法</strong></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#范式建模法third-normal-form3nf"><i class="fa fa-check"></i><b>3.2.1</b> <strong>范式建模法（Third Normal Form，3NF）</strong></a></li>
+<li class="chapter" data-level="3.2.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模法dimensional-modeling"><i class="fa fa-check"></i><b>3.2.2</b> <strong>维度建模法（Dimensional Modeling）</strong></a></li>
+<li class="chapter" data-level="3.2.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#实体建模法entity-modeling"><i class="fa fa-check"></i><b>3.2.3</b> <strong>实体建模法（Entity Modeling）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模详解"><i class="fa fa-check"></i><b>3.3</b> <strong>维度建模详解</strong></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模中表的类型"><i class="fa fa-check"></i><b>3.3.1</b> <strong>维度建模中表的类型</strong></a></li>
+<li class="chapter" data-level="3.3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#事实表"><i class="fa fa-check"></i><b>3.3.2</b> <strong>事实表</strong></a></li>
+<li class="chapter" data-level="3.3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度表"><i class="fa fa-check"></i><b>3.3.3</b> 维度表</a></li>
+<li class="chapter" data-level="3.3.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模三种模式"><i class="fa fa-check"></i><b>3.3.4</b> 维度建模三种模式</a></li>
+<li class="chapter" data-level="3.3.5" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模过程"><i class="fa fa-check"></i><b>3.3.5</b> 维度建模过程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="离线数仓建设.html"><a href="离线数仓建设.html"><i class="fa fa-check"></i><b>4</b> 离线数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#业务理解"><i class="fa fa-check"></i><b>4.1</b> 业务理解</a></li>
+<li class="chapter" data-level="4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#早期规划"><i class="fa fa-check"></i><b>4.2</b> 早期规划</a></li>
+<li class="chapter" data-level="4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据中台"><i class="fa fa-check"></i><b>4.3</b> 数据中台</a></li>
+<li class="chapter" data-level="4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数仓建设"><i class="fa fa-check"></i><b>4.4</b> 数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型"><i class="fa fa-check"></i><b>4.4.1</b> 模型</a></li>
+<li class="chapter" data-level="4.4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型分层"><i class="fa fa-check"></i><b>4.4.2</b> 模型分层</a></li>
+<li class="chapter" data-level="4.4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据流向"><i class="fa fa-check"></i><b>4.4.3</b> 数据流向</a></li>
+<li class="chapter" data-level="4.4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#规范"><i class="fa fa-check"></i><b>4.4.4</b> 规范</a></li>
+<li class="chapter" data-level="4.4.5" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据层具体实现"><i class="fa fa-check"></i><b>4.4.5</b> 数据层具体实现</a></li>
+<li class="chapter" data-level="4.4.6" data-path="离线数仓建设.html"><a href="离线数仓建设.html#总结"><i class="fa fa-check"></i><b>4.4.6</b> 总结</a></li>
+<li class="chapter" data-level="4.4.7" data-path="离线数仓建设.html"><a href="离线数仓建设.html#实际生产中注意事项"><i class="fa fa-check"></i><b>4.4.7</b> 实际生产中注意事项</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="实时计算.html"><a href="实时计算.html"><i class="fa fa-check"></i><b>5</b> 实时计算</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="实时计算.html"><a href="实时计算.html#实时计算应用场景"><i class="fa fa-check"></i><b>5.1</b> 实时计算应用场景</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="实时计算.html"><a href="实时计算.html#实时智能推荐"><i class="fa fa-check"></i><b>5.1.1</b> 实时智能推荐</a></li>
+<li class="chapter" data-level="5.1.2" data-path="实时计算.html"><a href="实时计算.html#实时欺诈检测"><i class="fa fa-check"></i><b>5.1.2</b> 实时欺诈检测</a></li>
+<li class="chapter" data-level="5.1.3" data-path="实时计算.html"><a href="实时计算.html#舆情分析"><i class="fa fa-check"></i><b>5.1.3</b> 舆情分析</a></li>
+<li class="chapter" data-level="5.1.4" data-path="实时计算.html"><a href="实时计算.html#复杂事件处理"><i class="fa fa-check"></i><b>5.1.4</b> 复杂事件处理</a></li>
+<li class="chapter" data-level="5.1.5" data-path="实时计算.html"><a href="实时计算.html#实时机器学习"><i class="fa fa-check"></i><b>5.1.5</b> 实时机器学习</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="实时计算.html"><a href="实时计算.html#实时计算总览"><i class="fa fa-check"></i><b>5.2</b> 实时计算总览</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="实时计算.html"><a href="实时计算.html#数据同步"><i class="fa fa-check"></i><b>5.2.1</b> 数据同步：</a></li>
+<li class="chapter" data-level="5.2.2" data-path="实时计算.html"><a href="实时计算.html#数据存储"><i class="fa fa-check"></i><b>5.2.2</b> 数据存储：</a></li>
+<li class="chapter" data-level="5.2.3" data-path="实时计算.html"><a href="实时计算.html#数据计算"><i class="fa fa-check"></i><b>5.2.3</b> 数据计算：</a></li>
+<li class="chapter" data-level="5.2.4" data-path="实时计算.html"><a href="实时计算.html#实时应用"><i class="fa fa-check"></i><b>5.2.4</b> 实时应用：</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="实时计算.html"><a href="实时计算.html#实时架构"><i class="fa fa-check"></i><b>5.3</b> 实时架构</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="实时计算.html"><a href="实时计算.html#lambda架构"><i class="fa fa-check"></i><b>5.3.1</b> Lambda架构</a></li>
+<li class="chapter" data-level="5.3.2" data-path="实时计算.html"><a href="实时计算.html#为什么lambda架构要分成两条线计算"><i class="fa fa-check"></i><b>5.3.2</b> 为什么Lambda架构要分成两条线计算？</a></li>
+<li class="chapter" data-level="5.3.3" data-path="实时计算.html"><a href="实时计算.html#lambda架构有没有缺点"><i class="fa fa-check"></i><b>5.3.3</b> Lambda架构有没有缺点</a></li>
+<li class="chapter" data-level="5.3.4" data-path="实时计算.html"><a href="实时计算.html#kappa架构"><i class="fa fa-check"></i><b>5.3.4</b> Kappa架构</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="实时数仓建设.html"><a href="实时数仓建设.html"><i class="fa fa-check"></i><b>6</b> 实时数仓建设</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时计算初期"><i class="fa fa-check"></i><b>6.1</b> 实时计算初期</a></li>
+<li class="chapter" data-level="6.2" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时数仓建设-1"><i class="fa fa-check"></i><b>6.2</b> 实时数仓建设</a></li>
+<li class="chapter" data-level="6.3" data-path="实时数仓建设.html"><a href="实时数仓建设.html#lambda架构的实时数仓"><i class="fa fa-check"></i><b>6.3</b> Lambda架构的实时数仓</a></li>
+<li class="chapter" data-level="6.4" data-path="实时数仓建设.html"><a href="实时数仓建设.html#kappa架构的实时数仓"><i class="fa fa-check"></i><b>6.4</b> Kappa架构的实时数仓</a></li>
+<li class="chapter" data-level="6.5" data-path="实时数仓建设.html"><a href="实时数仓建设.html#流批结合的实时数仓"><i class="fa fa-check"></i><b>6.5</b> 流批结合的实时数仓</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html"><i class="fa fa-check"></i><b>7</b> 搭建数据仓库</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#基于flink-sql从0到1构建一个实时数仓"><i class="fa fa-check"></i><b>7.1</b> 基于Flink SQL从0到1构建一个实时数仓</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#架构设计"><i class="fa fa-check"></i><b>7.1.1</b> 架构设计</a></li>
+<li class="chapter" data-level="7.1.2" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#业务数据准备"><i class="fa fa-check"></i><b>7.1.2</b> 业务数据准备</a></li>
+<li class="chapter" data-level="7.1.3" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#数据处理流程"><i class="fa fa-check"></i><b>7.1.3</b> 数据处理流程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html"><i class="fa fa-check"></i><b>8</b> 数仓规范建设指南</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓公共开发规范"><i class="fa fa-check"></i><b>8.1</b> 数仓公共开发规范</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#层次调用规范"><i class="fa fa-check"></i><b>8.1.1</b> 层次调用规范</a></li>
+<li class="chapter" data-level="8.1.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据类型规范"><i class="fa fa-check"></i><b>8.1.2</b> 数据类型规范</a></li>
+<li class="chapter" data-level="8.1.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据冗余规范"><i class="fa fa-check"></i><b>8.1.3</b> 数据冗余规范</a></li>
+<li class="chapter" data-level="8.1.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#null字段处理规范"><i class="fa fa-check"></i><b>8.1.4</b> NULL字段处理规范</a></li>
+<li class="chapter" data-level="8.1.5" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标口径规范"><i class="fa fa-check"></i><b>8.1.5</b> 指标口径规范</a></li>
+<li class="chapter" data-level="8.1.6" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据表处理规范"><i class="fa fa-check"></i><b>8.1.6</b> 数据表处理规范</a></li>
+<li class="chapter" data-level="8.1.7" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表的生命周期管理"><i class="fa fa-check"></i><b>8.1.7</b> 表的生命周期管理</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓各层开发规范"><i class="fa fa-check"></i><b>8.2</b> 数仓各层开发规范</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#ods层设计规范"><i class="fa fa-check"></i><b>8.2.1</b> ODS层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#公共维度层设计规范"><i class="fa fa-check"></i><b>8.3</b> 公共维度层设计规范</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#设计准则"><i class="fa fa-check"></i><b>8.3.1</b> 设计准则</a></li>
+<li class="chapter" data-level="8.3.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dwd明细层设计规范"><i class="fa fa-check"></i><b>8.3.2</b> DWD明细层设计规范</a></li>
+<li class="chapter" data-level="8.3.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dws公共汇总层设计规范"><i class="fa fa-check"></i><b>8.3.3</b> DWS公共汇总层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓命名规范"><i class="fa fa-check"></i><b>8.4</b> 数仓命名规范</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#词根设计规范"><i class="fa fa-check"></i><b>8.4.1</b> 词根设计规范</a></li>
+<li class="chapter" data-level="8.4.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓表的命名规范如下"><i class="fa fa-check"></i><b>8.4.2</b> 数仓表的命名规范如下：</a></li>
+<li class="chapter" data-level="8.4.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表命名规范"><i class="fa fa-check"></i><b>8.4.3</b> 表命名规范</a></li>
+<li class="chapter" data-level="8.4.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标命名规范"><i class="fa fa-check"></i><b>8.4.4</b> 指标命名规范</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="其他一些内容.html"><a href="其他一些内容.html"><i class="fa fa-check"></i><b>9</b> 其他一些内容</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发挂件角色"><i class="fa fa-check"></i><b>9.1</b> 数据仓库开发挂件角色</a></li>
+<li class="chapter" data-level="9.2" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发需要掌握的技能"><i class="fa fa-check"></i><b>9.2</b> 数据仓库开发需要掌握的技能</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="其他一些内容.html"><a href="其他一些内容.html#如何额进行elt"><i class="fa fa-check"></i><b>9.2.1</b> 如何额进行ELT</a></li>
+<li class="chapter" data-level="9.2.2" data-path="其他一些内容.html"><a href="其他一些内容.html#一个简单的etl例子"><i class="fa fa-check"></i><b>9.2.2</b> 一个简单的ETL例子</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Warehouse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="离线数仓建设" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> 离线数仓建设<a href="离线数仓建设.html#离线数仓建设" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="业务理解" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> 业务理解<a href="离线数仓建设.html#业务理解" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>需要针对不同需求的用户开发不同的产品，所以公司内部有很多条业务线，但是对于数据部门来说，所有业务线的数据都是数据源。对数据的划分不只是根据业务进行，而是结合数据的属性。</p>
+</div>
+<div id="早期规划" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> 早期规划<a href="离线数仓建设.html#早期规划" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>之前开发是不同业务线对应不同的数据团队，每个数据团队互不干扰，这种模式比较简单，只针对自己的业务线进行数仓建设及报表开发即可。</p>
+<p>但是随着业务的发展，频繁迭代及跨部门的垂直业务单元越来越多，业务之间的出现耦合情况，这时再采用这种烟囱式开发就出现了问题：</p>
+<p>例如权限问题，公司对数据管理比较严格，不同的数据开发组没有权限共享数据，需要其他业务线的数据权限需要上报审批，比较耽误时间；</p>
+<p>还有重复开发问题，不同业务线会出现相同的报表需求，如果每个业务方都开发各自的报表，太浪费资源。</p>
+<p>所以对于数据开发而言，需要对各个业务线的数据进行统一管理，所以就有了数据中台的出现。</p>
+</div>
+<div id="数据中台" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> 数据中台<a href="离线数仓建设.html#数据中台" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>数据中台是根据每个公司具体的业务需求而搭建的，不同的业务，对中台的理解有所不同。</p>
+<p>公司内部开发的敏捷数据中台，主要从数据技术和计算能力的复用，到数据资产和数据服务的复用，数据中台以更大价值带宽，快准精让数据直接赋能业务。提供一个统一化的管理，打破数据孤岛，追溯数据血缘，实现自助化及高复用度。</p>
+<p><img src="https://picx.zhimg.com/80/v2-34fd1c4fb9d6540bfb18c58b2c513ca2_1440w.png" /></p>
+<p>比如我们之前做报表开发流程，首先是要数据采集，不同的数据源通过sqoop等工具采集到大数据平台，然后进行数仓搭建，最后产出报表数据，放到可视化系统展示，最终把整个流程写成脚本放到调度平台进行自动化执行。</p>
+<p>而有了数据中台之后就不需要那么繁琐，直接进行数仓搭建，产生报表即可，无需将精力过多放在数据源、可视化展示及调度。并且可以直观的查看数据血缘关系，计算表之间血缘。像下面图中，表之间的依赖关系很明确：</p>
+<p><img src="https://picx.zhimg.com/80/v2-61060fa3f24918d05fef00eb9ca5fe41_1440w.png" /></p>
+</div>
+<div id="数仓建设" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> 数仓建设<a href="离线数仓建设.html#数仓建设" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>数仓建设核心思想：从设计、开发、部署和使用层面，避免重复建设和指标冗余建设，从而保障数据口径的规范和统一，最终实现数据资产全链路关联、提供标准数据输出以及建立统一的数据公共层。</p>
+<p><em>数仓建设主要从两个方面进行，模型和规范，所有业务进行统一化</em></p>
+<div id="模型" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> 模型<a href="离线数仓建设.html#模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>所有业务采用统一的模型体系，从而降低研发成本，增强指标复用，并且能保证数据口径的统一</p>
+</div>
+<div id="模型分层" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> 模型分层<a href="离线数仓建设.html#模型分层" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>结合公司业务，后期新增需求较多，所以分层不宜过多，并且需要清晰明确各层职责，要保证数据层的稳定又要屏蔽对下游影响，所以采用如下分层结构：</p>
+<p><img src="https://pica.zhimg.com/80/v2-6b99d3712d1565438d3555f2a751c973_1440w.png" /></p>
+</div>
+<div id="数据流向" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> 数据流向<a href="离线数仓建设.html#数据流向" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>遵循模型开发时分层结构，数据从 ods -&gt; dw -&gt; dm -&gt;app 这样正向流动，可以防止因数据引用不规范而造成数据链路混乱及SLA时效难保障等问题，同时保证血缘关系简洁化，能够轻易追踪数据流向。在开发时应避免以下情况出现：</p>
+<ol style="list-style-type: decimal">
+<li>数据引用链路不正确，如 ods -&gt; dm -&gt;app ，出现这种情况说明明细层没有完全覆盖数据；如 ods -&gt; dw -&gt; app ，说明轻度汇总层主题划分未覆盖全。减少跨层引用，才能提高中间表的复用度。理想的数仓模型设计应当具备：数据模型可复⽤，完善且规范。</li>
+<li>尽量避免一层的表生成当前层的表，如dw层表生成dw层表，这样会影响ETL效率。</li>
+<li>禁止出现反向依赖，如dw表依赖于dm表。</li>
+</ol>
+</div>
+<div id="规范" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> 规范<a href="离线数仓建设.html#规范" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>表命名规范</li>
+</ol>
+<ul>
+<li>对于ods、dm、app层表名：类型_主题_表含义，如：dm_xxsh_user</li>
+<li>对于dw层表名：类型_主题_维度_表含义，如：dw_xxsh_fact_users（事实表）、dw_xxsh_dim_city（维度表）</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>字段命名规范</li>
+</ol>
+<p>构建词根，词根是维度和指标管理的基础，划分为普通词根与专有词根</p>
+<ul>
+<li>普通词根：描述事物的最小单元体，如：sex-性别。</li>
+<li>专有词根：具备行业专属或公司内部规定的描述体，如：xxsh-公司内部对某个产品的称呼。</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>脚本命名规范</li>
+</ol>
+<p>脚本名称：脚本类型.脚本功用.[库名].脚本名称，如 hive.hive.dm.dm_xxsh_users</p>
+<p>脚本类型主要分为以下三类：</p>
+<ul>
+<li>常规Hive sql：hive</li>
+<li>自定义shell脚本：sh</li>
+<li>自定义Python脚本：python</li>
+</ul>
+<pre><code>#变量的定义要符合python的语法要求
+#指定任务负责人
+owner = &quot;zhangsan@xxx.com&quot;
+#脚本存放目录/opt/xxx
+#脚本名称 hive.hive.dm.dm_xxsh_users
+#source用来标识上游依赖表，一个任务如果有多个上游表，都需要写进去
+#(xxx_name 是需要改动的，其余不需要改)
+source = {
+        &quot;table_name&quot;: {
+        &quot;db&quot;: &quot;db_name&quot;,
+        &quot;table&quot;: &quot;table_name&quot;
+        }
+}
+#如source，但是每个任务target只有一张表
+target = {
+        &quot;db_table&quot;: {
+                &quot;host&quot;: &quot;hive&quot;,
+                &quot;db&quot;: &quot;db_name&quot;,
+                &quot;table&quot;: &quot;table_name&quot;
+        }
+}
+#变量列表
+#$now
+#$now.date 常用，格式示例：2020-12-11
+
+ 
+task = &#39;&#39;&#39;
+写sql代码
+&#39;&#39;&#39;</code></pre>
+</div>
+<div id="数据层具体实现" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> 数据层具体实现<a href="离线数仓建设.html#数据层具体实现" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>数据源层ODS</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-c09544488fc06168ecdb54e3c9081f44_1440w.png" /></p>
+<p>数据源层主要将各个业务数据导入到大数据平台，作为业务数据的快照存储。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>数据明细层DW</li>
+</ol>
+<p><img src="https://picx.zhimg.com/80/v2-0e47ab436952567d45b8b87efb1fe1be_1440w.png" /></p>
+<p>事实表中的每行对应一个度量，每行中的数据是一个特定级别的细节数据，称为粒度。维度建模的核心原则之一是同一事实表中的所有度量必须具有相同的粒度。这样能确保不会出现重复计算度量的问题。</p>
+<p>维度表一般都是单一主键，少数是联合主键，注意维度表不要出现重复数据，否则和事实表关联会出现数据发散问题。</p>
+<p>有时候往往不能确定该列数据是事实属性还是维度属性。记住最实用的事实就是数值类型和可加类事实。所以可以通过分析该列是否是一种包含多个值并作为计算的参与者的度量，这种情况下该列往往是事实；如果该列是对具体值的描述，是一个文本或常量，某一约束和行标识的参与者，此时该属性往往是维度属性。但是还是要结合业务进行最终判断是维度还是事实。</p>
+<ol start="3" style="list-style-type: decimal">
+<li>数据轻度汇总层DM</li>
+</ol>
+<p><img src="https://picx.zhimg.com/80/v2-0e47ab436952567d45b8b87efb1fe1be_1440w.png" /></p>
+<p>此层命名为轻汇总层，就代表这一层已经开始对数据进行汇总，但是不是完全汇总，只是对相同粒度的数据进行关联汇总，不同粒度但是有关系的数据也可进行汇总，此时需要将粒度通过聚合等操作进行统一。</p>
+<ol start="4" style="list-style-type: decimal">
+<li>数据应用层APP</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-27311b6b9889c6059f19c876f17b0c22_1440w.png" /></p>
+<p>数据应用层的表就是提供给用户使用的，数仓建设到此就接近尾声了，接下来就根据不同的需求进行不同的取数，如直接进行报表展示，或提供给数据分析的同事所需的数据，或其他的业务支撑。</p>
+</div>
+<div id="总结" class="section level3 hasAnchor" number="4.4.6">
+<h3><span class="header-section-number">4.4.6</span> 总结<a href="离线数仓建设.html#总结" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://pica.zhimg.com/80/v2-81856eee5580fd9c64e38e9900f9abb7_1440w.png" /></p>
+</div>
+<div id="实际生产中注意事项" class="section level3 hasAnchor" number="4.4.7">
+<h3><span class="header-section-number">4.4.7</span> 实际生产中注意事项<a href="离线数仓建设.html#实际生产中注意事项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>生产环境中操作不能像我们自己测试时那样随意，一不小心都可能造成生产事故。所以每步操作都要十分小心. 注意事项包括:</p>
+<ol style="list-style-type: decimal">
+<li>请勿操作自己管理及授权表之外的其它库表；</li>
+<li>未经授权，请勿操作生产环境中其他人的脚本及文件；</li>
+<li>在修改生产环境脚本前，请务必自行备份到本地；</li>
+<li>请确认自己的修改操作能迅速回滚；</li>
+<li>生产环境中表名及字段等所有命名请遵循命名规则。</li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="离线数仓建设核心.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="实时计算.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-parts.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

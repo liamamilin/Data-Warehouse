@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 搭建数据仓库 | Data Warehouse</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 搭建数据仓库 | Data Warehouse" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 搭建数据仓库 | Data Warehouse" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="米霖" />
+
+
+<meta name="date" content="2023-01-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="实时数仓建设.html"/>
+<link rel="next" href="数仓规范建设指南.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Warehouse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
+<li class="chapter" data-level="2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html"><i class="fa fa-check"></i><b>2</b> 数据仓库的基本概念</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓架构"><i class="fa fa-check"></i><b>2.1</b> 数仓架构</a></li>
+<li class="chapter" data-level="2.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库基本概念"><i class="fa fa-check"></i><b>2.2</b> 数据仓库基本概念</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#基本特征"><i class="fa fa-check"></i><b>2.2.1</b> <strong>基本特征</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#为什么要有数据仓库"><i class="fa fa-check"></i><b>2.3</b> 为什么要有数据仓库</a></li>
+<li class="chapter" data-level="2.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库与数据库的区别"><i class="fa fa-check"></i><b>2.4</b> 数据仓库与数据库的区别</a></li>
+<li class="chapter" data-level="2.5" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库分层架构"><i class="fa fa-check"></i><b>2.5</b> <strong>数据仓库分层架构</strong></a></li>
+<li class="chapter" data-level="2.6" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库架构"><i class="fa fa-check"></i><b>2.6</b> 数据仓库架构</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据集市架构"><i class="fa fa-check"></i><b>2.6.1</b> <strong>数据集市架构</strong></a></li>
+<li class="chapter" data-level="2.6.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#inmon企业工厂架构"><i class="fa fa-check"></i><b>2.6.2</b> <strong>Inmon企业工厂架构</strong></a></li>
+<li class="chapter" data-level="2.6.3" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#kimball数据仓库架构"><i class="fa fa-check"></i><b>2.6.3</b> <strong>Kimball数据仓库架构</strong></a></li>
+<li class="chapter" data-level="2.6.4" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#混合型数据仓库架构"><i class="fa fa-check"></i><b>2.6.4</b> <strong>混合型数据仓库架构</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数据仓库元数据的管理"><i class="fa fa-check"></i><b>2.7</b> <strong>数据仓库元数据的管理</strong></a></li>
+<li class="chapter" data-level="2.8" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓常见术语解析"><i class="fa fa-check"></i><b>2.8</b> <strong>数仓常见术语解析</strong></a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词解释"><i class="fa fa-check"></i><b>2.8.1</b> <strong>数仓名词解释</strong></a></li>
+<li class="chapter" data-level="2.8.2" data-path="数据仓库的基本概念.html"><a href="数据仓库的基本概念.html#数仓名词之间关系"><i class="fa fa-check"></i><b>2.8.2</b> <strong>数仓名词之间关系</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html"><i class="fa fa-check"></i><b>3</b> <strong>离线数仓建设核心</strong></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓分层"><i class="fa fa-check"></i><b>3.1</b> <strong>数仓分层</strong></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据源层odsoperational-data-store"><i class="fa fa-check"></i><b>3.1.1</b> <strong>数据源层：ODS（Operational Data Store）</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据仓库层dwdata-warehouse"><i class="fa fa-check"></i><b>3.1.2</b> <strong>数据仓库层：DW（Data Warehouse）</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数据应用层appapplication"><i class="fa fa-check"></i><b>3.1.3</b> <strong>数据应用层：APP（Application）</strong></a></li>
+<li class="chapter" data-level="3.1.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维表层dimdimension"><i class="fa fa-check"></i><b>3.1.4</b> <strong>维表层：DIM（Dimension）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#数仓建模方法"><i class="fa fa-check"></i><b>3.2</b> <strong>数仓建模方法</strong></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#范式建模法third-normal-form3nf"><i class="fa fa-check"></i><b>3.2.1</b> <strong>范式建模法（Third Normal Form，3NF）</strong></a></li>
+<li class="chapter" data-level="3.2.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模法dimensional-modeling"><i class="fa fa-check"></i><b>3.2.2</b> <strong>维度建模法（Dimensional Modeling）</strong></a></li>
+<li class="chapter" data-level="3.2.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#实体建模法entity-modeling"><i class="fa fa-check"></i><b>3.2.3</b> <strong>实体建模法（Entity Modeling）</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模详解"><i class="fa fa-check"></i><b>3.3</b> <strong>维度建模详解</strong></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模中表的类型"><i class="fa fa-check"></i><b>3.3.1</b> <strong>维度建模中表的类型</strong></a></li>
+<li class="chapter" data-level="3.3.2" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#事实表"><i class="fa fa-check"></i><b>3.3.2</b> <strong>事实表</strong></a></li>
+<li class="chapter" data-level="3.3.3" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度表"><i class="fa fa-check"></i><b>3.3.3</b> 维度表</a></li>
+<li class="chapter" data-level="3.3.4" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模三种模式"><i class="fa fa-check"></i><b>3.3.4</b> 维度建模三种模式</a></li>
+<li class="chapter" data-level="3.3.5" data-path="离线数仓建设核心.html"><a href="离线数仓建设核心.html#维度建模过程"><i class="fa fa-check"></i><b>3.3.5</b> 维度建模过程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="离线数仓建设.html"><a href="离线数仓建设.html"><i class="fa fa-check"></i><b>4</b> 离线数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#业务理解"><i class="fa fa-check"></i><b>4.1</b> 业务理解</a></li>
+<li class="chapter" data-level="4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#早期规划"><i class="fa fa-check"></i><b>4.2</b> 早期规划</a></li>
+<li class="chapter" data-level="4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据中台"><i class="fa fa-check"></i><b>4.3</b> 数据中台</a></li>
+<li class="chapter" data-level="4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数仓建设"><i class="fa fa-check"></i><b>4.4</b> 数仓建设</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型"><i class="fa fa-check"></i><b>4.4.1</b> 模型</a></li>
+<li class="chapter" data-level="4.4.2" data-path="离线数仓建设.html"><a href="离线数仓建设.html#模型分层"><i class="fa fa-check"></i><b>4.4.2</b> 模型分层</a></li>
+<li class="chapter" data-level="4.4.3" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据流向"><i class="fa fa-check"></i><b>4.4.3</b> 数据流向</a></li>
+<li class="chapter" data-level="4.4.4" data-path="离线数仓建设.html"><a href="离线数仓建设.html#规范"><i class="fa fa-check"></i><b>4.4.4</b> 规范</a></li>
+<li class="chapter" data-level="4.4.5" data-path="离线数仓建设.html"><a href="离线数仓建设.html#数据层具体实现"><i class="fa fa-check"></i><b>4.4.5</b> 数据层具体实现</a></li>
+<li class="chapter" data-level="4.4.6" data-path="离线数仓建设.html"><a href="离线数仓建设.html#总结"><i class="fa fa-check"></i><b>4.4.6</b> 总结</a></li>
+<li class="chapter" data-level="4.4.7" data-path="离线数仓建设.html"><a href="离线数仓建设.html#实际生产中注意事项"><i class="fa fa-check"></i><b>4.4.7</b> 实际生产中注意事项</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="实时计算.html"><a href="实时计算.html"><i class="fa fa-check"></i><b>5</b> 实时计算</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="实时计算.html"><a href="实时计算.html#实时计算应用场景"><i class="fa fa-check"></i><b>5.1</b> 实时计算应用场景</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="实时计算.html"><a href="实时计算.html#实时智能推荐"><i class="fa fa-check"></i><b>5.1.1</b> 实时智能推荐</a></li>
+<li class="chapter" data-level="5.1.2" data-path="实时计算.html"><a href="实时计算.html#实时欺诈检测"><i class="fa fa-check"></i><b>5.1.2</b> 实时欺诈检测</a></li>
+<li class="chapter" data-level="5.1.3" data-path="实时计算.html"><a href="实时计算.html#舆情分析"><i class="fa fa-check"></i><b>5.1.3</b> 舆情分析</a></li>
+<li class="chapter" data-level="5.1.4" data-path="实时计算.html"><a href="实时计算.html#复杂事件处理"><i class="fa fa-check"></i><b>5.1.4</b> 复杂事件处理</a></li>
+<li class="chapter" data-level="5.1.5" data-path="实时计算.html"><a href="实时计算.html#实时机器学习"><i class="fa fa-check"></i><b>5.1.5</b> 实时机器学习</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="实时计算.html"><a href="实时计算.html#实时计算总览"><i class="fa fa-check"></i><b>5.2</b> 实时计算总览</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="实时计算.html"><a href="实时计算.html#数据同步"><i class="fa fa-check"></i><b>5.2.1</b> 数据同步：</a></li>
+<li class="chapter" data-level="5.2.2" data-path="实时计算.html"><a href="实时计算.html#数据存储"><i class="fa fa-check"></i><b>5.2.2</b> 数据存储：</a></li>
+<li class="chapter" data-level="5.2.3" data-path="实时计算.html"><a href="实时计算.html#数据计算"><i class="fa fa-check"></i><b>5.2.3</b> 数据计算：</a></li>
+<li class="chapter" data-level="5.2.4" data-path="实时计算.html"><a href="实时计算.html#实时应用"><i class="fa fa-check"></i><b>5.2.4</b> 实时应用：</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="实时计算.html"><a href="实时计算.html#实时架构"><i class="fa fa-check"></i><b>5.3</b> 实时架构</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="实时计算.html"><a href="实时计算.html#lambda架构"><i class="fa fa-check"></i><b>5.3.1</b> Lambda架构</a></li>
+<li class="chapter" data-level="5.3.2" data-path="实时计算.html"><a href="实时计算.html#为什么lambda架构要分成两条线计算"><i class="fa fa-check"></i><b>5.3.2</b> 为什么Lambda架构要分成两条线计算？</a></li>
+<li class="chapter" data-level="5.3.3" data-path="实时计算.html"><a href="实时计算.html#lambda架构有没有缺点"><i class="fa fa-check"></i><b>5.3.3</b> Lambda架构有没有缺点</a></li>
+<li class="chapter" data-level="5.3.4" data-path="实时计算.html"><a href="实时计算.html#kappa架构"><i class="fa fa-check"></i><b>5.3.4</b> Kappa架构</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="实时数仓建设.html"><a href="实时数仓建设.html"><i class="fa fa-check"></i><b>6</b> 实时数仓建设</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时计算初期"><i class="fa fa-check"></i><b>6.1</b> 实时计算初期</a></li>
+<li class="chapter" data-level="6.2" data-path="实时数仓建设.html"><a href="实时数仓建设.html#实时数仓建设-1"><i class="fa fa-check"></i><b>6.2</b> 实时数仓建设</a></li>
+<li class="chapter" data-level="6.3" data-path="实时数仓建设.html"><a href="实时数仓建设.html#lambda架构的实时数仓"><i class="fa fa-check"></i><b>6.3</b> Lambda架构的实时数仓</a></li>
+<li class="chapter" data-level="6.4" data-path="实时数仓建设.html"><a href="实时数仓建设.html#kappa架构的实时数仓"><i class="fa fa-check"></i><b>6.4</b> Kappa架构的实时数仓</a></li>
+<li class="chapter" data-level="6.5" data-path="实时数仓建设.html"><a href="实时数仓建设.html#流批结合的实时数仓"><i class="fa fa-check"></i><b>6.5</b> 流批结合的实时数仓</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html"><i class="fa fa-check"></i><b>7</b> 搭建数据仓库</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#基于flink-sql从0到1构建一个实时数仓"><i class="fa fa-check"></i><b>7.1</b> 基于Flink SQL从0到1构建一个实时数仓</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#架构设计"><i class="fa fa-check"></i><b>7.1.1</b> 架构设计</a></li>
+<li class="chapter" data-level="7.1.2" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#业务数据准备"><i class="fa fa-check"></i><b>7.1.2</b> 业务数据准备</a></li>
+<li class="chapter" data-level="7.1.3" data-path="搭建数据仓库.html"><a href="搭建数据仓库.html#数据处理流程"><i class="fa fa-check"></i><b>7.1.3</b> 数据处理流程</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html"><i class="fa fa-check"></i><b>8</b> 数仓规范建设指南</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓公共开发规范"><i class="fa fa-check"></i><b>8.1</b> 数仓公共开发规范</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#层次调用规范"><i class="fa fa-check"></i><b>8.1.1</b> 层次调用规范</a></li>
+<li class="chapter" data-level="8.1.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据类型规范"><i class="fa fa-check"></i><b>8.1.2</b> 数据类型规范</a></li>
+<li class="chapter" data-level="8.1.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据冗余规范"><i class="fa fa-check"></i><b>8.1.3</b> 数据冗余规范</a></li>
+<li class="chapter" data-level="8.1.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#null字段处理规范"><i class="fa fa-check"></i><b>8.1.4</b> NULL字段处理规范</a></li>
+<li class="chapter" data-level="8.1.5" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标口径规范"><i class="fa fa-check"></i><b>8.1.5</b> 指标口径规范</a></li>
+<li class="chapter" data-level="8.1.6" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数据表处理规范"><i class="fa fa-check"></i><b>8.1.6</b> 数据表处理规范</a></li>
+<li class="chapter" data-level="8.1.7" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表的生命周期管理"><i class="fa fa-check"></i><b>8.1.7</b> 表的生命周期管理</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓各层开发规范"><i class="fa fa-check"></i><b>8.2</b> 数仓各层开发规范</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#ods层设计规范"><i class="fa fa-check"></i><b>8.2.1</b> ODS层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#公共维度层设计规范"><i class="fa fa-check"></i><b>8.3</b> 公共维度层设计规范</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#设计准则"><i class="fa fa-check"></i><b>8.3.1</b> 设计准则</a></li>
+<li class="chapter" data-level="8.3.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dwd明细层设计规范"><i class="fa fa-check"></i><b>8.3.2</b> DWD明细层设计规范</a></li>
+<li class="chapter" data-level="8.3.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#dws公共汇总层设计规范"><i class="fa fa-check"></i><b>8.3.3</b> DWS公共汇总层设计规范</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓命名规范"><i class="fa fa-check"></i><b>8.4</b> 数仓命名规范</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#词根设计规范"><i class="fa fa-check"></i><b>8.4.1</b> 词根设计规范</a></li>
+<li class="chapter" data-level="8.4.2" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#数仓表的命名规范如下"><i class="fa fa-check"></i><b>8.4.2</b> 数仓表的命名规范如下：</a></li>
+<li class="chapter" data-level="8.4.3" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#表命名规范"><i class="fa fa-check"></i><b>8.4.3</b> 表命名规范</a></li>
+<li class="chapter" data-level="8.4.4" data-path="数仓规范建设指南.html"><a href="数仓规范建设指南.html#指标命名规范"><i class="fa fa-check"></i><b>8.4.4</b> 指标命名规范</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="其他一些内容.html"><a href="其他一些内容.html"><i class="fa fa-check"></i><b>9</b> 其他一些内容</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发挂件角色"><i class="fa fa-check"></i><b>9.1</b> 数据仓库开发挂件角色</a></li>
+<li class="chapter" data-level="9.2" data-path="其他一些内容.html"><a href="其他一些内容.html#数据仓库开发需要掌握的技能"><i class="fa fa-check"></i><b>9.2</b> 数据仓库开发需要掌握的技能</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="其他一些内容.html"><a href="其他一些内容.html#如何额进行elt"><i class="fa fa-check"></i><b>9.2.1</b> 如何额进行ELT</a></li>
+<li class="chapter" data-level="9.2.2" data-path="其他一些内容.html"><a href="其他一些内容.html#一个简单的etl例子"><i class="fa fa-check"></i><b>9.2.2</b> 一个简单的ETL例子</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Warehouse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="搭建数据仓库" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> 搭建数据仓库<a href="搭建数据仓库.html#搭建数据仓库" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="基于flink-sql从0到1构建一个实时数仓" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 基于Flink SQL从0到1构建一个实时数仓<a href="搭建数据仓库.html#基于flink-sql从0到1构建一个实时数仓" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>实时数仓主要解决传统数仓数据时效性低的问题，实时数仓通常会用在实时的OLAP分析，实时大屏展示，实时监控报警各个场景。虽然关于实时数仓架构及技术选型与传统的离线数仓会存在差异，但是关于数仓建设的基本方法论是一致的。</p>
+<p>这里以电商场景为例子, 所有操作都是在Flink SQL Cli中完成。</p>
+<div id="架构设计" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> 架构设计<a href="搭建数据仓库.html#架构设计" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>具体的架构设计如图所示：首先通过canal解析MySQL的binlog日志，将数据存储在Kafka中。然后使用Flink SQL对原始数据进行清洗关联，并将处理之后的明细宽表写入Kafka中。维表数据存储在MySQL中，通过Flink SQL对明细宽表与维表进行join，将聚合后的数据写入MySQL，最后通过FineBI进行可视化展示。</p>
+<p><img src="https://picx.zhimg.com/80/v2-b7d0e190d597536bd129ebd5ea877582_1440w.png" /></p>
+</div>
+<div id="业务数据准备" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> 业务数据准备<a href="搭建数据仓库.html#业务数据准备" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="订单表order_info" class="section level4 hasAnchor" number="7.1.2.1">
+<h4><span class="header-section-number">7.1.2.1</span> 订单表(order_info)<a href="搭建数据仓库.html#订单表order_info" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>CREATE TABLE `order_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT &#39;编号&#39;,
+  `consignee` varchar(100) DEFAULT NULL COMMENT &#39;收货人&#39;,
+  `consignee_tel` varchar(20) DEFAULT NULL COMMENT &#39;收件人电话&#39;,
+  `total_amount` decimal(10,2) DEFAULT NULL COMMENT &#39;总金额&#39;,
+  `order_status` varchar(20) DEFAULT NULL COMMENT &#39;订单状态&#39;,
+  `user_id` bigint(20) DEFAULT NULL COMMENT &#39;用户id&#39;,
+  `payment_way` varchar(20) DEFAULT NULL COMMENT &#39;付款方式&#39;,
+  `delivery_address` varchar(1000) DEFAULT NULL COMMENT &#39;送货地址&#39;,
+  `order_comment` varchar(200) DEFAULT NULL COMMENT &#39;订单备注&#39;,
+  `out_trade_no` varchar(50) DEFAULT NULL COMMENT &#39;订单交易编号（第三方支付用)&#39;,
+  `trade_body` varchar(200) DEFAULT NULL COMMENT &#39;订单描述(第三方支付用)&#39;,
+  `create_time` datetime DEFAULT NULL COMMENT &#39;创建时间&#39;,
+  `operate_time` datetime DEFAULT NULL COMMENT &#39;操作时间&#39;,
+  `expire_time` datetime DEFAULT NULL COMMENT &#39;失效时间&#39;,
+  `tracking_no` varchar(100) DEFAULT NULL COMMENT &#39;物流单编号&#39;,
+  `parent_order_id` bigint(20) DEFAULT NULL COMMENT &#39;父订单编号&#39;,
+  `img_url` varchar(200) DEFAULT NULL COMMENT &#39;图片路径&#39;,
+  `province_id` int(20) DEFAULT NULL COMMENT &#39;地区&#39;,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#39;订单表&#39;;</code></pre>
+<p>代码解释:</p>
+<p><code>id</code> bigint(20) NOT NULL AUTO_INCREMENT COMMENT ‘编号’,</p>
+<ol style="list-style-type: decimal">
+<li>id: 这是列的名称，通常用于唯一标识每行记录。</li>
+<li>bigint(20): 这部分指定了列的数据类型。在这里，它指定了数据类型为bigint，这是一种整数数据类型，通常用于存储大整数值。括号中的数字20表示该列的宽度或显示宽度，即该列可以存储的整数位数。</li>
+<li>NOT NULL: 这部分指定了该列的约束条件。NOT NULL表示该列不允许存储空值（NULL）。每个行都必须为这个列提供一个非空的值。</li>
+<li>AUTO_INCREMENT: 这是一个自增属性，通常用于主键列。它指示数据库系统在插入新行时自动为这个列分配一个唯一的自增值。这可以确保每行的id值都是唯一的。</li>
+<li>COMMENT ‘编号’: 这是一个注释，用于提供关于这个列的描述或解释。在这里，它提供了有关id列的简短描述，说明这个列用于存储编号。</li>
+</ol>
+<p>PRIMARY KEY (<code>id</code>)</p>
+<ol style="list-style-type: decimal">
+<li>PRIMARY KEY: 这部分指示将下一列或列列表设置为主键。主键是用于唯一标识表中每一行记录的列。主键值必须是唯一的，不允许有重复的值。</li>
+<li>(id): 在括号内列出了一个或多个列名，这些列将被指定为主键。在这个例子中，只有一个列名 id 被列出，表示 id 列将被设置为主键。</li>
+</ol>
+<p>ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=‘订单表’;</p>
+<ol style="list-style-type: decimal">
+<li>ENGINE=InnoDB: 这部分指定了使用的存储引擎。在这里，存储引擎被设置为InnoDB。存储引擎是用于管理表的底层存储和数据操作的系统组件。InnoDB 是一种流行的存储引擎，它提供了事务支持、外键约束和其他高级功能。</li>
+<li>AUTO_INCREMENT=1: 这部分指定了自增属性的起始值。对于具有自增属性的列，每次插入新行时，该列的值会自动递增。在这里，它设置自增列的起始值为1，这意味着第一行将具有 1 的值，第二行将具有 2 的值，以此类推。</li>
+<li>DEFAULT CHARSET=utf8: 这部分指定了表的默认字符集。字符集决定了表中存储的文本数据的编码方式。在这里，字符集被设置为 utf8，这是一种通用的字符集，用于存储多国语言的文本数据。</li>
+<li>COMMENT=‘订单表’: 这是一个注释，提供了有关表的描述或解释。在这里，它简要描述了表的用途，即 “订单表”。</li>
+</ol>
+<p>这段 SQL 代码定义了一个名为 “订单表” 的数据库表，使用 InnoDB 存储引擎，具有一个自增列（起始值为1），并使用 utf8 字符集来存储文本数据</p>
+</div>
+<div id="订单详情表order_detail" class="section level4 hasAnchor" number="7.1.2.2">
+<h4><span class="header-section-number">7.1.2.2</span> 订单详情表(order_detail)<a href="搭建数据仓库.html#订单详情表order_detail" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>CREATE TABLE `order_detail` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT &#39;编号&#39;,
+  `order_id` bigint(20) DEFAULT NULL COMMENT &#39;订单编号&#39;,
+  `sku_id` bigint(20) DEFAULT NULL COMMENT &#39;sku_id&#39;,
+  `sku_name` varchar(200) DEFAULT NULL COMMENT &#39;sku名称（冗余)&#39;,
+  `img_url` varchar(200) DEFAULT NULL COMMENT &#39;图片名称（冗余)&#39;,
+  `order_price` decimal(10,2) DEFAULT NULL COMMENT &#39;购买价格(下单时sku价格）&#39;,
+  `sku_num` varchar(200) DEFAULT NULL COMMENT &#39;购买个数&#39;,
+  `create_time` datetime DEFAULT NULL COMMENT &#39;创建时间&#39;,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#39;订单详情表&#39;;</code></pre>
+</div>
+<div id="商品表sku_info" class="section level4 hasAnchor" number="7.1.2.3">
+<h4><span class="header-section-number">7.1.2.3</span> 商品表(sku_info)<a href="搭建数据仓库.html#商品表sku_info" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>CREATE TABLE `sku_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT &#39;skuid(itemID)&#39;,
+  `spu_id` bigint(20) DEFAULT NULL COMMENT &#39;spuid&#39;,
+  `price` decimal(10,0) DEFAULT NULL COMMENT &#39;价格&#39;,
+  `sku_name` varchar(200) DEFAULT NULL COMMENT &#39;sku名称&#39;,
+  `sku_desc` varchar(2000) DEFAULT NULL COMMENT &#39;商品规格描述&#39;,
+  `weight` decimal(10,2) DEFAULT NULL COMMENT &#39;重量&#39;,
+  `tm_id` bigint(20) DEFAULT NULL COMMENT &#39;品牌(冗余)&#39;,
+  `category3_id` bigint(20) DEFAULT NULL COMMENT &#39;三级分类id（冗余)&#39;,
+  `sku_default_img` varchar(200) DEFAULT NULL COMMENT &#39;默认显示图片(冗余)&#39;,
+  `create_time` datetime DEFAULT NULL COMMENT &#39;创建时间&#39;,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#39;商品表&#39;;</code></pre>
+</div>
+<div id="商品一级类目表base_category1" class="section level4 hasAnchor" number="7.1.2.4">
+<h4><span class="header-section-number">7.1.2.4</span> 商品一级类目表(base_category1)<a href="搭建数据仓库.html#商品一级类目表base_category1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>CREATE TABLE `base_category1` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT &#39;编号&#39;,
+  `name` varchar(10) NOT NULL COMMENT &#39;分类名称&#39;,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#39;一级分类表&#39;;</code></pre>
+</div>
+<div id="商品二级类目表base_category2" class="section level4 hasAnchor" number="7.1.2.5">
+<h4><span class="header-section-number">7.1.2.5</span> 商品二级类目表(base_category2)<a href="搭建数据仓库.html#商品二级类目表base_category2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>CREATE TABLE `base_category2` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT &#39;编号&#39;,
+  `name` varchar(200) NOT NULL COMMENT &#39;二级分类名称&#39;,
+  `category1_id` bigint(20) DEFAULT NULL COMMENT &#39;一级分类编号&#39;,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#39;二级分类表&#39;;</code></pre>
+</div>
+<div id="商品三级类目表base_category3" class="section level4 hasAnchor" number="7.1.2.6">
+<h4><span class="header-section-number">7.1.2.6</span> 商品三级类目表(base_category3)<a href="搭建数据仓库.html#商品三级类目表base_category3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>CREATE TABLE `base_category3` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT &#39;编号&#39;,
+  `name` varchar(200) NOT NULL COMMENT &#39;三级分类名称&#39;,
+  `category2_id` bigint(20) DEFAULT NULL COMMENT &#39;二级分类编号&#39;,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#39;三级分类表&#39;;</code></pre>
+</div>
+<div id="省份表区域表base_regionbase_province" class="section level4 hasAnchor" number="7.1.2.7">
+<h4><span class="header-section-number">7.1.2.7</span> 省份表(区域表（base_region）base_province)<a href="搭建数据仓库.html#省份表区域表base_regionbase_province" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>CREATE TABLE `base_province` (
+  `id` int(20) DEFAULT NULL COMMENT &#39;id&#39;,
+  `name` varchar(20) DEFAULT NULL COMMENT &#39;省名称&#39;,
+  `region_id` int(20) DEFAULT NULL COMMENT &#39;大区id&#39;,
+  `area_code` varchar(20) DEFAULT NULL COMMENT &#39;行政区位码&#39;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;</code></pre>
+</div>
+<div id="区域表base_region" class="section level4 hasAnchor" number="7.1.2.8">
+<h4><span class="header-section-number">7.1.2.8</span> 区域表(base_region)<a href="搭建数据仓库.html#区域表base_region" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>CREATE TABLE `base_region` (
+  `id` int(20) NOT NULL COMMENT &#39;大区id&#39;,
+  `region_name` varchar(20) DEFAULT NULL COMMENT &#39;大区名称&#39;,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;</code></pre>
+</div>
+</div>
+<div id="数据处理流程" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> 数据处理流程<a href="搭建数据仓库.html#数据处理流程" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ods层数据同步" class="section level4 hasAnchor" number="7.1.3.1">
+<h4><span class="header-section-number">7.1.3.1</span> ods层数据同步<a href="搭建数据仓库.html#ods层数据同步" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>关于ODS层的数据同步主要使用canal解析MySQL的binlog日志，然后将其写入到Kafka对应的topic中。</p>
+</div>
+<div id="dim层数据准备" class="section level4 hasAnchor" number="7.1.3.2">
+<h4><span class="header-section-number">7.1.3.2</span> DIM层数据准备<a href="搭建数据仓库.html#dim层数据准备" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>维表存储在了MySQL中，实际生产中会用HBase存储维表数据。我们主要用到两张维表：区域维表和商品维表。处理过程如下：</p>
+<ol style="list-style-type: decimal">
+<li>区域维表</li>
+</ol>
+<p>首先将mydw.base_province和mydw.base_region这个主题对应的数据抽取到MySQL中，主要使用Flink SQL的Kafka数据源对应的canal-json格式，注意：在执行装载之前，需要先在MySQL中创建对应的表，本文使用的MySQL数据库的名字为dim，用于存放维表数据。如下：</p>
+<pre><code>-- -------------------------
+--   省份
+--   kafka Source
+-- ------------------------- 
+DROP TABLE IF EXISTS `ods_base_province`;
+CREATE TABLE `ods_base_province` (
+  `id` INT,
+  `name` STRING,
+  `region_id` INT ,
+  `area_code`STRING
+) WITH(
+&#39;connector&#39; = &#39;kafka&#39;,
+ &#39;topic&#39; = &#39;mydw.base_province&#39;,
+ &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+ &#39;properties.group.id&#39; = &#39;testGroup&#39;,
+ &#39;format&#39; = &#39;canal-json&#39; ,
+ &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39; 
+) ; 
+ 
+-- -------------------------
+--   省份
+--   MySQL Sink
+-- ------------------------- 
+DROP TABLE IF EXISTS `base_province`;
+CREATE TABLE `base_province` (
+    `id` INT,
+    `name` STRING,
+    `region_id` INT ,
+    `area_code`STRING,
+    PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/dim&#39;,
+    &#39;table-name&#39; = &#39;base_province&#39;, -- MySQL中的待插入数据的表
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;,
+    &#39;sink.buffer-flush.interval&#39; = &#39;1s&#39;
+);
+ 
+-- -------------------------
+--   省份
+--   MySQL Sink Load Data
+-- ------------------------- 
+INSERT INTO base_province
+SELECT *
+FROM ods_base_province;
+ 
+-- -------------------------
+--   区域
+--   kafka Source
+-- ------------------------- 
+DROP TABLE IF EXISTS `ods_base_region`;
+CREATE TABLE `ods_base_region` (
+  `id` INT,
+  `region_name` STRING
+) WITH(
+&#39;connector&#39; = &#39;kafka&#39;,
+ &#39;topic&#39; = &#39;mydw.base_region&#39;,
+ &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+ &#39;properties.group.id&#39; = &#39;testGroup&#39;,
+ &#39;format&#39; = &#39;canal-json&#39; ,
+ &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39; 
+) ; 
+ 
+-- -------------------------
+--   区域
+--   MySQL Sink
+-- ------------------------- 
+DROP TABLE IF EXISTS `base_region`;
+CREATE TABLE `base_region` (
+    `id` INT,
+    `region_name` STRING,
+     PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/dim&#39;,
+    &#39;table-name&#39; = &#39;base_region&#39;, -- MySQL中的待插入数据的表
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;,
+    &#39;sink.buffer-flush.interval&#39; = &#39;1s&#39;
+);
+ 
+-- -------------------------
+--   区域
+--   MySQL Sink Load Data
+-- ------------------------- 
+INSERT INTO base_region
+SELECT *
+FROM ods_base_region;</code></pre>
+<p>经过上面的步骤，将创建维表所需要的原始数据已经存储到了MySQL中，接下来就需要在MySQL中创建维表，我们使用上面的两张表，创建一张视图：dim_province作为维表：</p>
+<pre><code>-- ---------------------------------
+-- DIM层,区域维表,
+-- 在MySQL中创建视图
+-- ---------------------------------
+DROP VIEW IF EXISTS dim_province;
+CREATE VIEW dim_province AS
+SELECT
+  bp.id AS province_id,
+  bp.name AS province_name,
+  br.id AS region_id,
+  br.region_name AS region_name,
+  bp.area_code AS area_code
+FROM base_region br 
+     JOIN base_province bp ON br.id= bp.region_id;</code></pre>
+<p>这样我们所需要的维表：dim_province就创建好了，只需要在维表join时，使用Flink SQL创建JDBC的数据源，就可以使用该维表了。同理，我们使用相同的方法创建商品维表，具体如下：</p>
+<pre><code>-- -------------------------
+--  一级类目表
+--   kafka Source
+-- ------------------------- 
+DROP TABLE IF EXISTS `ods_base_category1`;
+CREATE TABLE `ods_base_category1` (
+  `id` BIGINT,
+  `name` STRING
+)WITH(
+ &#39;connector&#39; = &#39;kafka&#39;,
+ &#39;topic&#39; = &#39;mydw.base_category1&#39;,
+ &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+ &#39;properties.group.id&#39; = &#39;testGroup&#39;,
+ &#39;format&#39; = &#39;canal-json&#39; ,
+ &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39; 
+) ;
+ 
+-- -------------------------
+--  一级类目表
+--   MySQL Sink
+-- ------------------------- 
+DROP TABLE IF EXISTS `base_category1`;
+CREATE TABLE `base_category1` (
+    `id` BIGINT,
+    `name` STRING,
+     PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/dim&#39;,
+    &#39;table-name&#39; = &#39;base_category1&#39;, -- MySQL中的待插入数据的表
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;,
+    &#39;sink.buffer-flush.interval&#39; = &#39;1s&#39;
+);
+ 
+-- -------------------------
+--  一级类目表
+--   MySQL Sink Load Data
+-- ------------------------- 
+ 
+INSERT INTO base_category1
+SELECT *
+FROM ods_base_category1;
+ 
+-- -------------------------
+--  二级类目表
+--   kafka Source
+-- ------------------------- 
+DROP TABLE IF EXISTS `ods_base_category2`;
+CREATE TABLE `ods_base_category2` (
+  `id` BIGINT,
+  `name` STRING,
+  `category1_id` BIGINT
+)WITH(
+&#39;connector&#39; = &#39;kafka&#39;,
+ &#39;topic&#39; = &#39;mydw.base_category2&#39;,
+ &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+ &#39;properties.group.id&#39; = &#39;testGroup&#39;,
+ &#39;format&#39; = &#39;canal-json&#39; ,
+ &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39; 
+) ;
+ 
+-- -------------------------
+--  二级类目表
+--   MySQL Sink
+-- ------------------------- 
+DROP TABLE IF EXISTS `base_category2`;
+CREATE TABLE `base_category2` (
+    `id` BIGINT,
+    `name` STRING,
+    `category1_id` BIGINT,
+     PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/dim&#39;,
+    &#39;table-name&#39; = &#39;base_category2&#39;, -- MySQL中的待插入数据的表
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;,
+    &#39;sink.buffer-flush.interval&#39; = &#39;1s&#39;
+);
+ 
+-- -------------------------
+--  二级类目表
+--   MySQL Sink Load Data
+-- ------------------------- 
+INSERT INTO base_category2
+SELECT *
+FROM ods_base_category2;
+ 
+-- -------------------------
+-- 三级类目表
+--   kafka Source
+-- ------------------------- 
+DROP TABLE IF EXISTS `ods_base_category3`;
+CREATE TABLE `ods_base_category3` (
+  `id` BIGINT,
+  `name` STRING,
+  `category2_id` BIGINT
+)WITH(
+&#39;connector&#39; = &#39;kafka&#39;,
+ &#39;topic&#39; = &#39;mydw.base_category3&#39;,
+ &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+ &#39;properties.group.id&#39; = &#39;testGroup&#39;,
+ &#39;format&#39; = &#39;canal-json&#39; ,
+ &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39; 
+) ; 
+ 
+-- -------------------------
+--  三级类目表
+--   MySQL Sink
+-- ------------------------- 
+DROP TABLE IF EXISTS `base_category3`;
+CREATE TABLE `base_category3` (
+    `id` BIGINT,
+    `name` STRING,
+    `category2_id` BIGINT,
+    PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/dim&#39;,
+    &#39;table-name&#39; = &#39;base_category3&#39;, -- MySQL中的待插入数据的表
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;,
+    &#39;sink.buffer-flush.interval&#39; = &#39;1s&#39;
+);
+ 
+-- -------------------------
+--  三级类目表
+--   MySQL Sink Load Data
+-- ------------------------- 
+INSERT INTO base_category3
+SELECT *
+FROM ods_base_category3;
+ 
+-- -------------------------
+--   商品表
+--   Kafka Source
+-- ------------------------- 
+ 
+DROP TABLE IF EXISTS `ods_sku_info`;
+CREATE TABLE `ods_sku_info` (
+  `id` BIGINT,
+  `spu_id` BIGINT,
+  `price` DECIMAL(10,0),
+  `sku_name` STRING,
+  `sku_desc` STRING,
+  `weight` DECIMAL(10,2),
+  `tm_id` BIGINT,
+  `category3_id` BIGINT,
+  `sku_default_img` STRING,
+  `create_time` TIMESTAMP(0)
+) WITH(
+ &#39;connector&#39; = &#39;kafka&#39;,
+ &#39;topic&#39; = &#39;mydw.sku_info&#39;,
+ &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+ &#39;properties.group.id&#39; = &#39;testGroup&#39;,
+ &#39;format&#39; = &#39;canal-json&#39; ,
+ &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39; 
+) ; 
+ 
+-- -------------------------
+--   商品表
+--   MySQL Sink
+-- ------------------------- 
+DROP TABLE IF EXISTS `sku_info`;
+CREATE TABLE `sku_info` (
+  `id` BIGINT,
+  `spu_id` BIGINT,
+  `price` DECIMAL(10,0),
+  `sku_name` STRING,
+  `sku_desc` STRING,
+  `weight` DECIMAL(10,2),
+  `tm_id` BIGINT,
+  `category3_id` BIGINT,
+  `sku_default_img` STRING,
+  `create_time` TIMESTAMP(0),
+   PRIMARY KEY (tm_id) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/dim&#39;,
+    &#39;table-name&#39; = &#39;sku_info&#39;, -- MySQL中的待插入数据的表
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;,
+    &#39;sink.buffer-flush.interval&#39; = &#39;1s&#39;
+);
+ 
+-- -------------------------
+--   商品
+--   MySQL Sink Load Data
+-- ------------------------- 
+INSERT INTO sku_info
+SELECT *
+FROM ods_sku_info;</code></pre>
+<p>经过上面的步骤，我们可以将创建商品维表的基础数据表同步到MySQL中，同样需要提前创建好对应的数据表。接下来我们使用上面的基础表在mySQL的dim库中创建一张视图：dim_sku_info，用作后续使用的维表。</p>
+<pre><code>-- ---------------------------------
+-- DIM层,商品维表,
+-- 在MySQL中创建视图
+-- ---------------------------------
+CREATE VIEW dim_sku_info AS
+SELECT
+  si.id AS id,
+  si.sku_name AS sku_name,
+  si.category3_id AS c3_id,
+  si.weight AS weight,
+  si.tm_id AS tm_id,
+  si.price AS price,
+  si.spu_id AS spu_id,
+  c3.name AS c3_name,
+  c2.id AS c2_id,
+  c2.name AS c2_name,
+  c3.id AS c1_id,
+  c3.name AS c1_name
+FROM
+(
+  sku_info si 
+  JOIN base_category3 c3 ON si.category3_id = c3.id
+  JOIN base_category2 c2 ON c3.category2_id =c2.id
+  JOIN base_category1 c1 ON c2.category1_id = c1.id
+);</code></pre>
+<p>至此，我们所需要的维表数据已经准备好了，接下来开始处理DWD层的数据。</p>
+</div>
+<div id="dwd层数据处理" class="section level4 hasAnchor" number="7.1.3.3">
+<h4><span class="header-section-number">7.1.3.3</span> DWD层数据处理<a href="搭建数据仓库.html#dwd层数据处理" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>经过上面的步骤，我们已经将所用的维表已经准备好了。接下来我们将对ODS的原始数据进行处理，加工成DWD层的明细宽表。具体过程如下：</p>
+<pre><code>-- -------------------------
+--   订单详情
+--   Kafka Source
+-- ------------------------- 
+ 
+DROP TABLE IF EXISTS `ods_order_detail`;
+CREATE TABLE `ods_order_detail`(
+  `id` BIGINT,
+  `order_id` BIGINT,
+  `sku_id` BIGINT,
+  `sku_name` STRING,
+  `img_url` STRING,
+  `order_price` DECIMAL(10,2),
+  `sku_num` INT,
+  `create_time` TIMESTAMP(0)
+) WITH(
+ &#39;connector&#39; = &#39;kafka&#39;,
+ &#39;topic&#39; = &#39;mydw.order_detail&#39;,
+ &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+ &#39;properties.group.id&#39; = &#39;testGroup&#39;,
+ &#39;format&#39; = &#39;canal-json&#39; ,
+ &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39; 
+) ; 
+ 
+-- -------------------------
+--   订单信息
+--   Kafka Source
+-- -------------------------
+DROP TABLE IF EXISTS `ods_order_info`;
+CREATE TABLE `ods_order_info` (
+  `id` BIGINT,
+  `consignee` STRING,
+  `consignee_tel` STRING,
+  `total_amount` DECIMAL(10,2),
+  `order_status` STRING,
+  `user_id` BIGINT,
+  `payment_way` STRING,
+  `delivery_address` STRING,
+  `order_comment` STRING,
+  `out_trade_no` STRING,
+  `trade_body` STRING,
+  `create_time` TIMESTAMP(0) ,
+  `operate_time` TIMESTAMP(0) ,
+  `expire_time` TIMESTAMP(0) ,
+  `tracking_no` STRING,
+  `parent_order_id` BIGINT,
+  `img_url` STRING,
+  `province_id` INT
+) WITH(
+&#39;connector&#39; = &#39;kafka&#39;,
+ &#39;topic&#39; = &#39;mydw.order_info&#39;,
+ &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+ &#39;properties.group.id&#39; = &#39;testGroup&#39;,
+ &#39;format&#39; = &#39;canal-json&#39; ,
+ &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39; 
+) ; 
+ 
+-- ---------------------------------
+-- DWD层,支付订单明细表dwd_paid_order_detail
+-- ---------------------------------
+DROP TABLE IF EXISTS dwd_paid_order_detail;
+CREATE TABLE dwd_paid_order_detail
+(
+  detail_id BIGINT,
+  order_id BIGINT,
+  user_id BIGINT,
+  province_id INT,
+  sku_id BIGINT,
+  sku_name STRING,
+  sku_num INT,
+  order_price DECIMAL(10,0),
+  create_time STRING,
+  pay_time STRING
+ ) WITH (
+    &#39;connector&#39; = &#39;kafka&#39;,
+    &#39;topic&#39; = &#39;dwd_paid_order_detail&#39;,
+    &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+    &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+    &#39;format&#39; = &#39;changelog-json&#39;
+);
+-- ---------------------------------
+-- DWD层,已支付订单明细表
+-- 向dwd_paid_order_detail装载数据
+-- ---------------------------------
+INSERT INTO dwd_paid_order_detail
+SELECT
+  od.id,
+  oi.id order_id,
+  oi.user_id,
+  oi.province_id,
+  od.sku_id,
+  od.sku_name,
+  od.sku_num,
+  od.order_price,
+  oi.create_time,
+  oi.operate_time
+FROM
+    (
+    SELECT * 
+    FROM ods_order_info
+    WHERE order_status = &#39;2&#39; -- 已支付
+    ) oi JOIN
+    (
+    SELECT *
+    FROM ods_order_detail
+    ) od 
+    ON oi.id = od.order_id;</code></pre>
+</div>
+<div id="ads层数据" class="section level4 hasAnchor" number="7.1.3.4">
+<h4><span class="header-section-number">7.1.3.4</span> ADS层数据<a href="搭建数据仓库.html#ads层数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>经过上面的步骤，我们创建了一张dwd_paid_order_detail明细宽表，并将该表存储在了Kafka中。接下来我们将使用这张明细宽表与维表进行JOIN，得到我们ADS应用层数据。</p>
+<ol style="list-style-type: decimal">
+<li>ads_province_index</li>
+</ol>
+<p>首先在MySQL中创建对应的ADS目标表：ads_province_index</p>
+<pre><code>CREATE TABLE ads.ads_province_index(
+  province_id INT(10),
+  area_code VARCHAR(100),
+  province_name VARCHAR(100),
+  region_id INT(10),
+  region_name VARCHAR(100),
+  order_amount DECIMAL(10,2),
+  order_count BIGINT(10),
+  dt VARCHAR(100),
+  PRIMARY KEY (province_id, dt) 
+) ;</code></pre>
+<p>向MySQL的ADS层目标装载数据：</p>
+<pre><code>-- Flink SQL Cli操作
+-- ---------------------------------
+-- 使用 DDL创建MySQL中的ADS层表
+-- 指标：1.每天每个省份的订单数
+--      2.每天每个省份的订单金额
+-- ---------------------------------
+CREATE TABLE ads_province_index(
+  province_id INT,
+  area_code STRING,
+  province_name STRING,
+  region_id INT,
+  region_name STRING,
+  order_amount DECIMAL(10,2),
+  order_count BIGINT,
+  dt STRING,
+  PRIMARY KEY (province_id, dt) NOT ENFORCED  
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/ads&#39;,
+    &#39;table-name&#39; = &#39;ads_province_index&#39;, 
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;
+);
+-- ---------------------------------
+-- dwd_paid_order_detail已支付订单明细宽表
+-- ---------------------------------
+CREATE TABLE dwd_paid_order_detail
+(
+  detail_id BIGINT,
+  order_id BIGINT,
+  user_id BIGINT,
+  province_id INT,
+  sku_id BIGINT,
+  sku_name STRING,
+  sku_num INT,
+  order_price DECIMAL(10,2),
+  create_time STRING,
+  pay_time STRING
+ ) WITH (
+    &#39;connector&#39; = &#39;kafka&#39;,
+    &#39;topic&#39; = &#39;dwd_paid_order_detail&#39;,
+    &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+    &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+    &#39;format&#39; = &#39;changelog-json&#39;
+);
+ 
+-- ---------------------------------
+-- tmp_province_index
+-- 订单汇总临时表
+-- ---------------------------------
+CREATE TABLE tmp_province_index(
+    province_id INT,
+    order_count BIGINT,-- 订单数
+    order_amount DECIMAL(10,2), -- 订单金额
+    pay_date DATE
+)WITH (
+    &#39;connector&#39; = &#39;kafka&#39;,
+    &#39;topic&#39; = &#39;tmp_province_index&#39;,
+    &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+    &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+    &#39;format&#39; = &#39;changelog-json&#39;
+);
+-- ---------------------------------
+-- tmp_province_index
+-- 订单汇总临时表数据装载
+-- ---------------------------------
+INSERT INTO tmp_province_index
+SELECT
+      province_id,
+      count(distinct order_id) order_count,-- 订单数
+      sum(order_price * sku_num) order_amount, -- 订单金额
+      TO_DATE(pay_time,&#39;yyyy-MM-dd&#39;) pay_date
+FROM dwd_paid_order_detail
+GROUP BY province_id,TO_DATE(pay_time,&#39;yyyy-MM-dd&#39;)
+;
+-- ---------------------------------
+-- tmp_province_index_source
+-- 使用该临时汇总表，作为数据源
+-- ---------------------------------
+CREATE TABLE tmp_province_index_source(
+    province_id INT,
+    order_count BIGINT,-- 订单数
+    order_amount DECIMAL(10,2), -- 订单金额
+    pay_date DATE,
+    proctime as PROCTIME()   -- 通过计算列产生一个处理时间列
+ ) WITH (
+    &#39;connector&#39; = &#39;kafka&#39;,
+    &#39;topic&#39; = &#39;tmp_province_index&#39;,
+    &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+    &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+    &#39;format&#39; = &#39;changelog-json&#39;
+);
+ 
+-- ---------------------------------
+-- DIM层,区域维表,
+-- 创建区域维表数据源
+-- ---------------------------------
+DROP TABLE IF EXISTS `dim_province`;
+CREATE TABLE dim_province (
+  province_id INT,
+  province_name STRING,
+  area_code STRING,
+  region_id INT,
+  region_name STRING ,
+  PRIMARY KEY (province_id) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/dim&#39;,
+    &#39;table-name&#39; = &#39;dim_province&#39;, 
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;,
+    &#39;scan.fetch-size&#39; = &#39;100&#39;
+);
+ 
+-- ---------------------------------
+-- 向ads_province_index装载数据
+-- 维表JOIN
+-- ---------------------------------
+ 
+INSERT INTO ads_province_index
+SELECT
+  pc.province_id,
+  dp.area_code,
+  dp.province_name,
+  dp.region_id,
+  dp.region_name,
+  pc.order_amount,
+  pc.order_count,
+  cast(pc.pay_date as VARCHAR)
+FROM
+tmp_province_index_source pc
+  JOIN dim_province FOR SYSTEM_TIME AS OF pc.proctime as dp 
+  ON dp.province_id = pc.province_id;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>ads_sku_index</li>
+</ol>
+<p>首先在MySQL中创建对应的ADS目标表：ads_sku_index</p>
+<pre><code>CREATE TABLE ads_sku_index
+(
+  sku_id BIGINT(10),
+  sku_name VARCHAR(100),
+  weight DOUBLE,
+  tm_id BIGINT(10),
+  price DOUBLE,
+  spu_id BIGINT(10),
+  c3_id BIGINT(10),
+  c3_name VARCHAR(100) ,
+  c2_id BIGINT(10),
+  c2_name VARCHAR(100),
+  c1_id BIGINT(10),
+  c1_name VARCHAR(100),
+  order_amount DOUBLE,
+  order_count BIGINT(10),
+  sku_count BIGINT(10),
+  dt varchar(100),
+  PRIMARY KEY (sku_id,dt)
+);</code></pre>
+<p>向MySQL的ADS层目标装载数据：</p>
+<pre><code>-- ---------------------------------
+-- 使用 DDL创建MySQL中的ADS层表
+-- 指标：1.每天每个商品对应的订单个数
+--      2.每天每个商品对应的订单金额
+--      3.每天每个商品对应的数量
+-- ---------------------------------
+CREATE TABLE ads_sku_index
+(
+  sku_id BIGINT,
+  sku_name VARCHAR,
+  weight DOUBLE,
+  tm_id BIGINT,
+  price DOUBLE,
+  spu_id BIGINT,
+  c3_id BIGINT,
+  c3_name VARCHAR ,
+  c2_id BIGINT,
+  c2_name VARCHAR,
+  c1_id BIGINT,
+  c1_name VARCHAR,
+  order_amount DOUBLE,
+  order_count BIGINT,
+  sku_count BIGINT,
+  dt varchar,
+  PRIMARY KEY (sku_id,dt) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/ads&#39;,
+    &#39;table-name&#39; = &#39;ads_sku_index&#39;, 
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;
+);
+ 
+-- ---------------------------------
+-- dwd_paid_order_detail已支付订单明细宽表
+-- ---------------------------------
+CREATE TABLE dwd_paid_order_detail
+(
+  detail_id BIGINT,
+  order_id BIGINT,
+  user_id BIGINT,
+  province_id INT,
+  sku_id BIGINT,
+  sku_name STRING,
+  sku_num INT,
+  order_price DECIMAL(10,2),
+  create_time STRING,
+  pay_time STRING
+ ) WITH (
+    &#39;connector&#39; = &#39;kafka&#39;,
+    &#39;topic&#39; = &#39;dwd_paid_order_detail&#39;,
+    &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+    &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+    &#39;format&#39; = &#39;changelog-json&#39;
+);
+ 
+-- ---------------------------------
+-- tmp_sku_index
+-- 商品指标统计
+-- ---------------------------------
+CREATE TABLE tmp_sku_index(
+    sku_id BIGINT,
+    order_count BIGINT,-- 订单数
+    order_amount DECIMAL(10,2), -- 订单金额
+ order_sku_num BIGINT,
+    pay_date DATE
+)WITH (
+    &#39;connector&#39; = &#39;kafka&#39;,
+    &#39;topic&#39; = &#39;tmp_sku_index&#39;,
+    &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+    &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+    &#39;format&#39; = &#39;changelog-json&#39;
+);
+-- ---------------------------------
+-- tmp_sku_index
+-- 数据装载
+-- ---------------------------------
+INSERT INTO tmp_sku_index
+SELECT
+      sku_id,
+      count(distinct order_id) order_count,-- 订单数
+      sum(order_price * sku_num) order_amount, -- 订单金额
+   sum(sku_num) order_sku_num,
+      TO_DATE(pay_time,&#39;yyyy-MM-dd&#39;) pay_date
+FROM dwd_paid_order_detail
+GROUP BY sku_id,TO_DATE(pay_time,&#39;yyyy-MM-dd&#39;)
+;
+ 
+-- ---------------------------------
+-- tmp_sku_index_source
+-- 使用该临时汇总表，作为数据源
+-- ---------------------------------
+CREATE TABLE tmp_sku_index_source(
+    sku_id BIGINT,
+    order_count BIGINT,-- 订单数
+    order_amount DECIMAL(10,2), -- 订单金额
+    order_sku_num BIGINT,
+    pay_date DATE,
+    proctime as PROCTIME()   -- 通过计算列产生一个处理时间列
+ ) WITH (
+    &#39;connector&#39; = &#39;kafka&#39;,
+    &#39;topic&#39; = &#39;tmp_sku_index&#39;,
+    &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+    &#39;properties.bootstrap.servers&#39; = &#39;kms-3:9092&#39;,
+    &#39;format&#39; = &#39;changelog-json&#39;
+);
+-- ---------------------------------
+-- DIM层,商品维表,
+-- 创建商品维表数据源
+-- ---------------------------------
+DROP TABLE IF EXISTS `dim_sku_info`;
+CREATE TABLE dim_sku_info (
+  id BIGINT,
+  sku_name STRING,
+  c3_id BIGINT,
+  weight DECIMAL(10,2),
+  tm_id BIGINT,
+  price DECIMAL(10,2),
+  spu_id BIGINT,
+  c3_name STRING,
+  c2_id BIGINT,
+  c2_name STRING,
+  c1_id BIGINT,
+  c1_name STRING,
+  PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    &#39;connector&#39; = &#39;jdbc&#39;,
+    &#39;url&#39; = &#39;jdbc:mysql://kms-1:3306/dim&#39;,
+    &#39;table-name&#39; = &#39;dim_sku_info&#39;, 
+    &#39;driver&#39; = &#39;com.mysql.jdbc.Driver&#39;,
+    &#39;username&#39; = &#39;root&#39;,
+    &#39;password&#39; = &#39;123qwe&#39;,
+    &#39;scan.fetch-size&#39; = &#39;100&#39;
+);
+-- ---------------------------------
+-- 向ads_sku_index装载数据
+-- 维表JOIN
+-- ---------------------------------
+INSERT INTO ads_sku_index
+SELECT
+  sku_id ,
+  sku_name ,
+  weight ,
+  tm_id ,
+  price ,
+  spu_id ,
+  c3_id ,
+  c3_name,
+  c2_id ,
+  c2_name ,
+  c1_id ,
+  c1_name ,
+  sc.order_amount,
+  sc.order_count ,
+  sc.order_sku_num ,
+  cast(sc.pay_date as VARCHAR)
+FROM
+tmp_sku_index_source sc 
+  JOIN dim_sku_info FOR SYSTEM_TIME AS OF sc.proctime as ds
+  ON ds.id = sc.sku_id;x</code></pre>
+<p>参考: <a href="https://cloud.tencent.com/developer/article/1916237" class="uri">https://cloud.tencent.com/developer/article/1916237</a></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="实时数仓建设.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="数仓规范建设指南.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-share.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
